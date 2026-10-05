@@ -1,0 +1,69 @@
+year,sector,gva,dep,method,nva,dep_share
+1997,Forest products,82160,12847,"BEA depreciation, wood (3210) plus paper (3220)",69313,0.156365628042843
+1998,Forest products,83370,13019,"BEA depreciation, wood (3210) plus paper (3220)",70351,0.156159289912439
+1999,Forest products,88784,13133,"BEA depreciation, wood (3210) plus paper (3220)",75651,0.147920796539917
+2000,Forest products,90476,13174,"BEA depreciation, wood (3210) plus paper (3220)",77302,0.145607674963526
+2001,Forest products,80725,13136,"BEA depreciation, wood (3210) plus paper (3220)",67589,0.162725301951068
+2002,Forest products,81377,12908,"BEA depreciation, wood (3210) plus paper (3220)",68469,0.158619757425317
+2003,Forest products,79739,12688,"BEA depreciation, wood (3210) plus paper (3220)",67051,0.159119126149061
+2004,Forest products,85316,12706,"BEA depreciation, wood (3210) plus paper (3220)",72610,0.14892868863988
+2005,Forest products,86385,12909,"BEA depreciation, wood (3210) plus paper (3220)",73476,0.149435665914221
+2006,Forest products,89653,13345,"BEA depreciation, wood (3210) plus paper (3220)",76308,0.148851683713875
+2007,Forest products,84826,13827,"BEA depreciation, wood (3210) plus paper (3220)",70999,0.163004267559475
+2008,Forest products,77025,14076,"BEA depreciation, wood (3210) plus paper (3220)",62949,0.182745861733204
+2009,Forest products,80431,13708,"BEA depreciation, wood (3210) plus paper (3220)",66723,0.170431798684587
+2010,Forest products,79705,13253,"BEA depreciation, wood (3210) plus paper (3220)",66452,0.166275641427765
+2011,Forest products,77521,13329,"BEA depreciation, wood (3210) plus paper (3220)",64192,0.171940506443415
+2012,Forest products,78972,13542,"BEA depreciation, wood (3210) plus paper (3220)",65430,0.171478498708403
+2013,Forest products,86794,13797,"BEA depreciation, wood (3210) plus paper (3220)",72997,0.158962601101459
+2014,Forest products,87326,14287,"BEA depreciation, wood (3210) plus paper (3220)",73039,0.163605340906488
+2015,Forest products,91459,14789,"BEA depreciation, wood (3210) plus paper (3220)",76670,0.161700871428728
+2016,Forest products,92400,15119,"BEA depreciation, wood (3210) plus paper (3220)",77281,0.163625541125541
+2017,Forest products,91585,15544,"BEA depreciation, wood (3210) plus paper (3220)",76041,0.169722116067042
+2018,Forest products,97167,15900,"BEA depreciation, wood (3210) plus paper (3220)",81267,0.163635802278551
+2019,Forest products,99540,16347,"BEA depreciation, wood (3210) plus paper (3220)",83193,0.164225437010247
+2020,Forest products,108084,16952,"BEA depreciation, wood (3210) plus paper (3220)",91132,0.156840975537545
+2021,Forest products,124646,17873,"BEA depreciation, wood (3210) plus paper (3220)",106773,0.143390080708567
+2022,Forest products,134779,19594,"BEA depreciation, wood (3210) plus paper (3220)",115185,0.145378731107962
+2023,Forest products,127516,20763,"BEA depreciation, wood (3210) plus paper (3220)",106753,0.162826625678346
+2024,Forest products,124427,21606,"BEA depreciation, wood (3210) plus paper (3220)",102821,0.17364398402276
+2025,Forest products,126425,22682,"BEA depreciation, wood (3210) plus paper (3220)",103743,0.179410717816887
+1997,Farms,88135,21088,"BEA depreciation, farms (110C)",67047,0.239269302774153
+1998,Farms,80020,22032,"BEA depreciation, farms (110C)",57988,0.275331167208198
+1999,Farms,71655,22612,"BEA depreciation, farms (110C)",49043,0.315567650547764
+2000,Farms,76657,22807,"BEA depreciation, farms (110C)",53850,0.297520122102352
+2001,Farms,79028,23149,"BEA depreciation, farms (110C)",55879,0.29292149617857
+2002,Farms,75073,23551,"BEA depreciation, farms (110C)",51522,0.313707990888868
+2003,Farms,92417,24293,"BEA depreciation, farms (110C)",68124,0.262862893190647
+2004,Farms,120924,25658,"BEA depreciation, farms (110C)",95266,0.212182858655023
+2005,Farms,106317,27483,"BEA depreciation, farms (110C)",78834,0.258500522023759
+2006,Farms,98279,28897,"BEA depreciation, farms (110C)",69382,0.294030260788164
+2007,Farms,117852,30077,"BEA depreciation, farms (110C)",87775,0.255209924311849
+2008,Farms,118766,31690,"BEA depreciation, farms (110C)",87076,0.266827206439553
+2009,Farms,102461,32622,"BEA depreciation, farms (110C)",69839,0.318384556074994
+2010,Farms,117043,33063,"BEA depreciation, farms (110C)",83980,0.282485923976658
+2011,Farms,151135,34701,"BEA depreciation, farms (110C)",116434,0.229602673106825
+2012,Farms,148752,37087,"BEA depreciation, farms (110C)",111665,0.249321017532537
+2013,Farms,184472,40342,"BEA depreciation, farms (110C)",144130,0.218689015135088
+2014,Farms,167051,44286,"BEA depreciation, farms (110C)",122765,0.26510466863413
+2015,Farms,146259,46488,"BEA depreciation, farms (110C)",99771,0.317847106844707
+2016,Farms,130270,46649,"BEA depreciation, farms (110C)",83621,0.358094726337607
+2017,Farms,138733,46597,"BEA depreciation, farms (110C)",92136,0.335875386533846
+2018,Farms,136825,46899,"BEA depreciation, farms (110C)",89926,0.342766307326877
+2019,Farms,122630,47526,"BEA depreciation, farms (110C)",75104,0.3875560629536
+2020,Farms,120506,48062,"BEA depreciation, farms (110C)",72444,0.398834912784426
+2021,Farms,185665,50536,"BEA depreciation, farms (110C)",135129,0.272189157891902
+2022,Farms,246303,56817,"BEA depreciation, farms (110C)",189486,0.230679285270581
+2023,Farms,217051,59644,"BEA depreciation, farms (110C)",157407,0.274792560273853
+2024,Farms,196211,60765,"BEA depreciation, farms (110C)",135446,0.309692117159588
+2025,Farms,203549,62582,"BEA depreciation, farms (110C)",140967,0.307454224781257
+2014,Seafood,11010,1584.69459960443,"Proxy: harvest and markets at the forestry, fishing and related (113F) depreciation ratio, processing at the food and beverage manufacturing ratio",9425.30540039557,0.143932297875062
+2015,Seafood,11815,1617.54759153665,"Proxy: harvest and markets at the forestry, fishing and related (113F) depreciation ratio, processing at the food and beverage manufacturing ratio",10197.4524084634,0.136906270972209
+2016,Seafood,12711,1798.93805787561,"Proxy: harvest and markets at the forestry, fishing and related (113F) depreciation ratio, processing at the food and beverage manufacturing ratio",10912.0619421244,0.141526084326616
+2017,Seafood,14065,2055.83014217286,"Proxy: harvest and markets at the forestry, fishing and related (113F) depreciation ratio, processing at the food and beverage manufacturing ratio",12009.1698578271,0.146166380531309
+2018,Seafood,14075,2114.80313156331,"Proxy: harvest and markets at the forestry, fishing and related (113F) depreciation ratio, processing at the food and beverage manufacturing ratio",11960.1968684367,0.150252442739845
+2019,Seafood,14660,2264.68078474931,"Proxy: harvest and markets at the forestry, fishing and related (113F) depreciation ratio, processing at the food and beverage manufacturing ratio",12395.3192152507,0.154480271811003
+2020,Seafood,14774,2161.68691891865,"Proxy: harvest and markets at the forestry, fishing and related (113F) depreciation ratio, processing at the food and beverage manufacturing ratio",12612.3130810814,0.14631697028013
+2021,Seafood,17073,2555.21569452723,"Proxy: harvest and markets at the forestry, fishing and related (113F) depreciation ratio, processing at the food and beverage manufacturing ratio",14517.7843054728,0.149664130177896
+2022,Seafood,17576,2834.31432607313,"Proxy: harvest and markets at the forestry, fishing and related (113F) depreciation ratio, processing at the food and beverage manufacturing ratio",14741.6856739269,0.161260487373301
+2023,Seafood,18503,2722.39134314401,"Proxy: harvest and markets at the forestry, fishing and related (113F) depreciation ratio, processing at the food and beverage manufacturing ratio",15780.608656856,0.147132429505702
