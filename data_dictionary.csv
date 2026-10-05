@@ -1,0 +1,47 @@
+file,column,description,units,source
+bea_va_farms_forest_1997_2025.csv,year,Calendar year,year,BEA TVA105-A
+bea_va_farms_forest_1997_2025.csv,farms,Value added: Farms,millions of current US dollars,BEA TVA105-A
+bea_va_farms_forest_1997_2025.csv,fff,"Value added: Forestry, fishing, and related activities (not used in figures because it mixes forestry, fishing and farm support)",millions of current US dollars,BEA TVA105-A
+bea_va_farms_forest_1997_2025.csv,gdp,Gross domestic product,millions of current US dollars,BEA TVA105-A
+bea_va_farms_forest_1997_2025.csv,paper,Value added: Paper products manufacturing,millions of current US dollars,BEA TVA105-A
+bea_va_farms_forest_1997_2025.csv,wood,Value added: Wood products manufacturing,millions of current US dollars,BEA TVA105-A
+bea_va_farms_forest_1997_2025.csv,forest,Forest products = wood + paper,millions of current US dollars,Derived
+bea_mesa_living_resources_2014_2023.csv,year,Calendar year,year,BEA Marine Economy Satellite Account
+bea_mesa_living_resources_2014_2023.csv,bn,"Value added: Living resources, marine (commercial harvest, seafood markets and processing, fish-based animal foods, marine pharmaceuticals)",billions of current US dollars,BEA MESA June 5 2025
+bea_mesa_living_resources_2014_2023.csv,sector,Label,text,Derived
+comtrade_us_raw_2014_2024.csv,year,Reference year (file includes 2014 to 2025 despite its name),year,UN Comtrade public API
+comtrade_us_raw_2014_2024.csv,flow,X = exports; M = imports,code,UN Comtrade
+comtrade_us_raw_2014_2024.csv,cmd,HS commodity code (HS2 01 to 24; 44; 47; 48; HS4 1604; 1605),code,UN Comtrade
+comtrade_us_raw_2014_2024.csv,fob,Free on board value (zero or missing for 2014 to 2016 imports),US dollars,UN Comtrade
+comtrade_us_raw_2014_2024.csv,primary,Primary value as reported (CIF for imports),US dollars,UN Comtrade
+us_trade_ratio_2014_2024.csv,year,Reference year (2014 to 2025; imports missing 2014 to 2016),year,Derived
+us_trade_ratio_2014_2024.csv,sector,"Agriculture (HS 01 to 24 less 03, 1604, 1605); Forest products (HS 44, 47, 48); Seafood (HS 03, 1604, 1605)",text,Derived
+us_trade_ratio_2014_2024.csv,M,Imports free on board,US dollars,Derived
+us_trade_ratio_2014_2024.csv,X,Exports free on board,US dollars,Derived
+us_trade_ratio_2014_2024.csv,ratio,X / M,ratio,Derived
+acfb2023_state_va_multipliers.csv,area,State or United States (Arkansas appears twice: worked example and state page),text,Arkansas Center for Forest Business 2023
+acfb2023_state_va_multipliers.csv,direct_va,Forestry direct contribution to GDP (forestry; logging; wood energy; solid wood products; pulp and paper; furniture),US dollars (2021),ACFB 2023
+acfb2023_state_va_multipliers.csv,multiplier_va,Indirect plus induced GDP contribution,US dollars (2021),ACFB 2023
+acfb2023_state_va_multipliers.csv,total_va,Total GDP contribution,US dollars (2021),ACFB 2023
+acfb2023_state_va_multipliers.csv,va_multiplier,total_va / direct_va,ratio,Derived
+forest_va_multiplier_range.csv,stat,"p05_state, p25_state, p75_state (quantiles of state multipliers, type 7) and national",text,Derived
+forest_va_multiplier_range.csv,multiplier,Value-added multiplier,ratio,Derived
+stress_test_forest_contribution_2022.csv,step,Cumulative scenario step,text,Derived
+stress_test_forest_contribution_2022.csv,lo,Low scenario (5th percentile state multiplier; carbon at $51 per tonne; recreation floor of hunting plus snow activities $24.1B),billions of US dollars,Derived
+stress_test_forest_contribution_2022.csv,mid,Central scenario (state median multiplier 1.83; carbon at $120 per tonne; 10% of outdoor recreation value added),billions of US dollars,Derived
+stress_test_forest_contribution_2022.csv,hi,High scenario (national multiplier 2.78; carbon at $190 per tonne; 25% of outdoor recreation value added),billions of US dollars,Derived
+bea_depreciation_by_industry_1925_2025.csv,year,Calendar year,year,BEA Fixed Assets detail (detailnonres_dep1.xlsx)
+bea_depreciation_by_industry_1925_2025.csv,110C;113F;3110;3120;3210;3220,Current-cost depreciation of private nonresidential fixed assets by BEA industry code (farms; forestry fishing and related; food; beverage and tobacco; wood products; paper products),millions of current US dollars,BEA Fixed Assets detail
+bea_net_value_added_farms_forest_seafood.csv,sector,Forest products (wood plus paper) or Farms or Seafood (harvest markets and processing),text,derived
+bea_net_value_added_farms_forest_seafood.csv,gva;dep;nva;dep_share,Gross value added; depreciation; net value added; depreciation share of gross,millions of current US dollars (share dimensionless),BEA TVA105-A and Fixed Assets detail; seafood depreciation is a proxy
+sector_green_nva_2022.csv,sector,Agriculture (farms plus food beverage and tobacco manufacturing) or Forest (wood plus paper) or Marine (living resources),text,derived
+sector_green_nva_2022.csv,gva;dep;nva,Gross value added; depreciation; net value added for 2022,billions of current US dollars,BEA
+sector_green_nva_2022.csv,ghg,Own carbon flux (positive is removal),MMT CO2e,EPA GHGI 2024 and EPA agriculture sector page
+sector_green_nva_2022.csv,green_lo;green_mid;green_hi,Net value added plus own carbon at $51 $120 and $190 per t (lo and hi are ordered by price not by value),billions of US dollars (mixed bases),derived
+sector_green_nva_2022.csv,full_adj_mid;full_adj_lo;full_adj_hi,Fourth step adjustment: agriculture minus FAO SOFA 2023 land nitrogen and water hidden costs (2020 PPP); forest plus Cavender-Bares 2022 air quality (2010 USD),billions of US dollars (mixed bases),FAO 2023; Cavender-Bares et al. 2022
+sector_green_nva_2022.csv,full_mid;full_lo;full_hi,Green net plus the fourth step adjustment with its range,billions of US dollars (mixed bases),derived
+us_trade_ratio_1981_2025.csv,year;sector;X;M;ratio;class,Calendar year; sector (Agriculture = HS 01 to 24 less seafood or SITC 0+1+22+4 less 03; Forest products = HS 44 47 48 or SITC 24 25 63 64; Seafood = HS 03 1604 1605 or SITC 03); exports; imports; X/M; classification (SITC1 to 1990 HS from 1991),current US dollars (ratio dimensionless),UN Comtrade
+us_trade_ratio_hs_1991_2025.csv;us_trade_ratio_sitc1_1962_1991.csv,year;sector;X;M;ratio,As above for the HS and SITC components separately,current US dollars,UN Comtrade
+comtrade_us_raw_1988_2013.csv;comtrade_us_raw_sitc1_1962_1991.csv,year;flow;cmd;fob;primary,Raw API rows: year; flow (X export M import); commodity code; FOB value; primary value,current US dollars,UN Comtrade public preview API
+fao_us_forest_trade_1961_2024.csv,Item;Year;X_kusd;M_kusd;ratio,FAOSTAT item (Primary wood and paper products or Wood pulp and paper products export/import); year; export value; import value; X/M,thousand current US dollars,FAOSTAT Forestry
+costanza2014_us_crosscheck.csv,sector;area_Mac;usd_ha;area_Mha;total_bn_2007usd;ratio_to_cropland,Sector; US area in million acres; Costanza 2014 unit value; area in million ha; area times unit value; ratio to cropland,mixed (see README),Costanza et al. 2014; ACFB 2023; USDA ERS
