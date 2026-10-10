@@ -45,3 +45,11 @@ us_trade_ratio_hs_1991_2025.csv;us_trade_ratio_sitc1_1962_1991.csv,year;sector;X
 comtrade_us_raw_1988_2013.csv;comtrade_us_raw_sitc1_1962_1991.csv,year;flow;cmd;fob;primary,Raw API rows: year; flow (X export M import); commodity code; FOB value; primary value,current US dollars,UN Comtrade public preview API
 fao_us_forest_trade_1961_2024.csv,Item;Year;X_kusd;M_kusd;ratio,FAOSTAT item (Primary wood and paper products or Wood pulp and paper products export/import); year; export value; import value; X/M,thousand current US dollars,FAOSTAT Forestry
 costanza2014_us_crosscheck.csv,sector;area_Mac;usd_ha;area_Mha;total_bn_2007usd;ratio_to_cropland,Sector; US area in million acres; Costanza 2014 unit value; area in million ha; area times unit value; ratio to cropland,mixed (see README),Costanza et al. 2014; ACFB 2023; USDA ERS
+epa_forest_sink_1990_2023.csv,year,Inventory year (EPA tabulates 1990 2005 and 2019 to 2023),year,EPA GHGI 1990-2023 Table 6-1
+epa_forest_sink_1990_2023.csv,net_uptake_mmt_co2e,Net forest carbon stock change including harvested wood products (positive is uptake),million metric tons CO2 equivalent per year,EPA GHGI 1990-2023 Table 6-1
+epa_forest_sink_1990_2023.csv,series,Inventory line used,text,EPA GHGI 1990-2023
+epa_forest_sink_1990_2023.csv,source,Citation and URL,text,
+research_capacity_funds_fy2024.csv,program,Federal research capacity program,text,
+research_capacity_funds_fy2024.csv,usd_millions,Enacted appropriation,millions of current US dollars,P.L. 118-42; Sea Grant Association
+research_capacity_funds_fy2024.csv,fiscal_year,Federal fiscal year,text,
+research_capacity_funds_fy2024.csv,source,Citation and URL,text,
