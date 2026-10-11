@@ -53,3 +53,9 @@ research_capacity_funds_fy2024.csv,program,Federal research capacity program,tex
 research_capacity_funds_fy2024.csv,usd_millions,Enacted appropriation,millions of current US dollars,P.L. 118-42; Sea Grant Association
 research_capacity_funds_fy2024.csv,fiscal_year,Federal fiscal year,text,
 research_capacity_funds_fy2024.csv,source,Citation and URL,text,
+seafood_hidden_cost_estimate.csv,item,Estimate component (landings; fuel intensity; fleet emissions; fleet carbon cost; lost rent),text,
+seafood_hidden_cost_estimate.csv,low,Low end of the range,see units,see basis
+seafood_hidden_cost_estimate.csv,central,Central value used in the figure,see units,see basis
+seafood_hidden_cost_estimate.csv,high,High end of the range,see units,see basis
+seafood_hidden_cost_estimate.csv,units,Units of the row,text,
+seafood_hidden_cost_estimate.csv,basis,Source and arithmetic; lost rent is speculative,text,NOAA FUS 2023; Parker et al. 2018; Greer et al. 2019; World Bank 2017; FAO SOFIA 2024; NOAA Status of Stocks 2024

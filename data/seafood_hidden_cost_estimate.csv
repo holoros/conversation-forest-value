@@ -1,0 +1,6 @@
+item,low,central,high,units,basis
+us_landings,3.81,3.81,3.81,million metric tons,NOAA Fisheries of the United States 2023 (preliminary) 8.4 billion lb https://www.fisheries.noaa.gov/resource/document/fisheries-united-states-reports
+fuel_intensity,1.88,2.24,2.24,t CO2e per t landed,Greer et al. 2019 (CO2 only) and Parker et al. 2018 179 Mt CO2e over an assumed ~80 Mt catch https://www.nature.com/articles/s41558-018-0117-x
+fleet_emissions,7.16,8.53,8.53,million t CO2e per year,us_landings x fuel_intensity (rough estimate)
+fleet_carbon_cost,0.37,1.02,1.62,billion USD per year,fleet_emissions x $51 / $120 / $190 per t
+lost_rent,0.5,1.87,4.41,billion USD per year,World Bank Sunken Billions Revisited $83.3B (2012) x U.S. share of world marine capture 5.3% (FAO SOFIA 2024) scaled by U.S. overfished share 16.0% / world 37.7%; low end reflects catch-limit management; speculative
