@@ -23,3 +23,7 @@ Figure 1 bases: gross and net value added (BEA, 2022), green net (own carbon at 
 7. Rscript out/2026-10-05_us-trade-ratio-1988-2013_data.R and out/2026-10-05_us-trade-ratio-sitc-1962-1991_data.R (rate limited, run detached), then out/2026-10-05_us-trade-ratio-combine.R -> us_trade_ratio_1981_2025.csv (SITC 1981 to 1990, HS 1991 to 2025). Figure 1 panel 2 and the graphical abstract use this series.
 Zenodo draft 23122536 resynchronized October 5, 2026: 40 files, checksums verified, graphical abstract rebuilt on the four bases. Still unsubmitted.
 8. Rscript out/2026-10-05_fao-forest-trade-1961_data.R (needs fao/Forestry_E_All_Data_(Normalized).csv from bulks-faostat.fao.org) and out/2026-10-05_costanza-crosscheck.R. Sea Grant bar set to FY2018 enacted ($76.5M).
+
+## Update, October 10, 2026
+9. python3 code/2026-10-10_forest-gep-figure_plot.py data <font_dir> figures/2026-10-10_forest-gep-figure_DRAFT
+   Python 3 with pandas, numpy and matplotlib (Agg). Reads sector_green_nva_2022.csv, us_trade_ratio_1981_2025.csv, epa_forest_sink_1990_2023.csv, research_capacity_funds_fy2024.csv and seafood_hidden_cost_estimate.csv. Fonts Libre Franklin and Source Serif 4 (SIL OFL). Four panel public version, October 11, 2026; output PNG md5 38d7dfc75d220673def47bc35ff3e3f6.
