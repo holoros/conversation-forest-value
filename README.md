@@ -23,3 +23,11 @@ Contact: Aaron Weiskittel, University of Maine, Center for Research on Sustainab
 ## Funding
 
 Supported by the U.S. Department of Agriculture (PERSEUS) and the National Science Foundation E-RISE program (Maine-FOREST).
+
+## 12 October 2026 update: farms, forests and fishing figure
+
+`figures/2026-10-12_farms-forests-fishing-figure_FINAL.png` (four panels) and the three panel variant replace the 10 and 11 October figures. Built by `code/2026-10-12_farms-forests-fishing-figure_plot.py` from `data/`.
+
+Panel 1 compares 2022 GDP with a full count (GDP less depreciation, plus or minus carbon at $120 per t CO2e, range $51 to $190, plus other nature: FAO land, nitrogen and water costs for farms; clean air from all U.S. trees, national forest water and recreation for forests). Each sector includes its first processing step. Forest carbon is 842.4 Mt CO2e (EPA GHGI 1990 to 2023, Table 6-1, 2022 value), farm emissions 634.0 Mt (EPA GHGI 2024 edition, economic sector Agriculture, includes on-farm fuel), fishing fleet 8.5 Mt (NOAA landings times a global intensity of 2.24 t CO2e per t, rough estimate). Panel 2 is net carbon flux 1990 to 2023 with dashed lines extending each sector's 1990 to 2023 linear trend to 2040; these are not forecasts. The trade panel note on harvest leakage cites Daigneault, Sohngen, Belair and Ellis (2025, Environmental Research Letters 20:114022); an earlier unverified leakage figure was removed. Panel 4 is FY2024 Hatch, Sea Grant (also funds coastal work) and McIntire-Stennis, kept in the figure for talks but no longer used in the article text. `sector_green_nva_2022.csv` was recomputed with the updated carbon values on 11 October.
+
+Authors: Aaron Weiskittel, Adam Daigneault (University of Maine) and Christopher W. Woodall (University of Maine and CTrees).
