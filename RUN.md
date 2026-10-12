@@ -21,7 +21,7 @@ No restricted, keyed or coordinate data. Not yet pushed to GitHub: needs Aaron's
 6. Rscript out/2026-10-04_sector-green-nva_plot.R -> sector_green_nva_2022.csv, 2026-10-04_sector-green-nva_DRAFT (single panel) and 2026-10-04_three-gaps_DRAFT (Figure 1, three panels)
 Figure 1 bases: gross and net value added (BEA, 2022), green net (own carbon at $51/$120/$190 per t), full (agriculture less FAO SOFA 2023 land, nitrogen and water hidden costs, 2020 PPP; forest plus Cavender-Bares et al. 2022 air quality, 2010 USD). Forest water and habitat unpriced. The 2026-10-03 figures are superseded but kept.
 7. Rscript out/2026-10-05_us-trade-ratio-1988-2013_data.R and out/2026-10-05_us-trade-ratio-sitc-1962-1991_data.R (rate limited, run detached), then out/2026-10-05_us-trade-ratio-combine.R -> us_trade_ratio_1981_2025.csv (SITC 1981 to 1990, HS 1991 to 2025). Figure 1 panel 2 and the graphical abstract use this series.
-Zenodo draft 23122536 resynchronized October 5, 2026: 40 files, checksums verified, graphical abstract rebuilt on the four bases. Still unsubmitted.
+Zenodo draft 23122536 was resynchronized October 5, 2026 (40 files) and published as version 1.2.0 on October 12, 2026 (57 files).
 8. Rscript out/2026-10-05_fao-forest-trade-1961_data.R (needs fao/Forestry_E_All_Data_(Normalized).csv from bulks-faostat.fao.org) and out/2026-10-05_costanza-crosscheck.R. Sea Grant bar set to FY2018 enacted ($76.5M).
 
 ## Update, October 10, 2026
