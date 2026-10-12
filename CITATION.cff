@@ -1,8 +1,8 @@
 cff-version: 1.2.0
 message: "If you use these data or code, please cite the concept DOI of this record."
 title: "Data and code: how much are America's forests worth? Net and green net value added for the forest, agriculture and marine sectors, trade ratios, research funding and a forest value stress test, United States, 1961 to 2025"
-version: 1.0.0
-date-released: 2026-10-03
+version: 1.2.0
+date-released: 2026-10-12
 license: CC-BY-4.0
 authors:
   - family-names: Weiskittel
@@ -13,6 +13,9 @@ authors:
     given-names: Adam
     affiliation: "University of Maine"
     orcid: "https://orcid.org/0000-0002-9094-160X"
+  - family-names: Woodall
+    given-names: Christopher W.
+    affiliation: "University of Maine; CTrees"
 doi: 10.5281/zenodo.23122535
 url: "https://doi.org/10.5281/zenodo.23122535"
-# Concept DOI (all versions). Version 1.0.0 DOI: 10.5281/zenodo.23122536. Both resolve once the record is published.
+# Concept DOI (all versions). Draft deposition 23122536 is unsubmitted; the DOIs resolve once Aaron publishes the record.
