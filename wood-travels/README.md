@@ -10,4 +10,4 @@ Routes are schematic and show origin and destination, not shipping paths. Figure
 
 Graphic: Center for Research on Sustainable Forests, University of Maine.
 
-Note (November 10, 2026): the Millinocket marker and label on the mill towns map were added to the PNG by hand after the R run; the R script does not yet draw them.
+Note (November 10, 2026): the Millinocket and Ashland (WholeTrees) markers and labels on the mill towns map were added to the PNG by hand after the R run, and the Millinocket label was shifted left to clear the Ashland marker; the R script does not yet draw them.
