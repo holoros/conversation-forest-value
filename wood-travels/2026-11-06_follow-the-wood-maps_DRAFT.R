@@ -51,7 +51,7 @@ me <- data.frame(
   kind = c("closed", "reborn", "reborn", "new", "research"),
   lab = c("Jay\nAndroscoggin Mill closed in 2023,\nabout 230 jobs lost",
           "Madison\nPaper mill closed in 2016; TimberHP now\nmakes insulation from chips and thinnings",
-          "Lincoln\nBiorefinery being built at a former\npaper mill to turn wood waste into fuel",
+          "Lincoln\nBiorefinery planned at a former\npaper mill to turn wood waste into fuel",
           "Saco\nTanbark makes food containers\nfrom wood fiber",
           "Orono\nUniversity of Maine pilot plant makes\ncellulose nanofibrils; leads the\nForest Bioproducts Tech Hub"))
 cols <- c(closed = "#5A5A5A", reborn = org, new = org, research = grn)
@@ -69,7 +69,7 @@ b <- ggplot() +
   coord_quickmap(xlim = c(-73.6, -65.2), ylim = c(42.9, 47.6), expand = FALSE) +
   labs(title = "Maine's mill towns, then and next",
        subtitle = "Gray X marks a closed mill. Orange marks new uses for wood, two of them in former paper mill towns.\nGreen marks university research behind the state's Forest Bioproducts Tech Hub.",
-       caption = paste0("Sources: Boston Globe (Jay); Mainebiz (Madison, TimberHP); UMaine News (Lincoln biorefinery, Tech Hub);\nMaine Public (Tanbark); UMaine Process Development Center (pilot plant).\n",
+       caption = paste0("Sources: Boston Globe (Jay); Mainebiz (Madison, TimberHP); UMaine News (Tech Hub); Town of Lincoln (biorefinery status, Jan. 2026);\nMaine Public (Tanbark); UMaine Process Development Center (pilot plant).\n",
                         "Graphic: Center for Research on Sustainable Forests, University of Maine.")) + th
 ggsave("2026-11-06_maine-mill-towns-map_DRAFT.png", b, width = 10, height = 8.5, dpi = 300, bg = "white")
 cat("done\n")
