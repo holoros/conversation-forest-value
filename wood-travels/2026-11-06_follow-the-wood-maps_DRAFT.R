@@ -17,7 +17,7 @@ pts <- data.frame(
   lon = c(-66.06, -83.63, -69.2, -70.7, -51.7), lat = c(45.27, 32.84, 45.3, 46.6, -20.8))
 routes <- data.frame(
   x = c(-66.06, -51.7, -69.8), y = c(45.27, -20.8, 45.6),
-  xend = c(-83.4, -75.5, -70.6), yend = c(33.1, 36.0, 46.45),
+  xend = c(-83.4, -77.3, -70.6), yend = c(33.1, 37.6, 46.45),
   col = c("pulp", "pulp", "logs"))
 a <- ggplot() +
   geom_polygon(data = world, aes(long, lat, group = group), fill = land, colour = "white", linewidth = 0.2) +
@@ -28,16 +28,16 @@ a <- ggplot() +
   geom_curve(data = routes[2, ], aes(x, y, xend = xend, yend = yend), colour = org, linewidth = 1.3, curvature = -0.3,
              arrow = arrow(length = unit(0.18, "in"), type = "closed")) +
     geom_point(data = pts[c(1, 2, 5), ], aes(lon, lat), size = 3.2, colour = ink) +
-  annotate("label", x = -86, y = 29.6, hjust = 0.5, size = 3.7, linewidth = 0.3, lineheight = 1.05,
-           label = "Macon, Ga.\nPulp from New Brunswick wood\nbecomes tissue, 1,000+ miles away") +
+  annotate("label", x = -89, y = 29.4, hjust = 0.5, size = 3.7, linewidth = 0.3, lineheight = 1.05,
+           label = "Macon, Ga.\nSaint John pulp becomes\ntissue, 1,000+ miles away") +
   annotate("label", x = -64.5, y = 48.6, hjust = 0, size = 3.7, linewidth = 0.3, lineheight = 1.05,
            label = "Saint John, N.B.\nPulp mill") +
-  annotate("label", x = -47, y = 33.5, hjust = 0.5, size = 3.7, linewidth = 0.3, lineheight = 1.05,
+  annotate("segment", x = -52, y = 36.5, xend = -68.6, yend = 44.6, colour = gry, linewidth = 0.4) +
+  annotate("label", x = -48, y = 33.5, hjust = 0.5, size = 3.7, linewidth = 0.3, lineheight = 1.05,
            label = "Maine logs cross the border to Quebec\nsawmills. In 2023, about 2 million tons of\nMaine's harvest left the state unprocessed,\nwhile 2.7 million tons came in from\nneighboring states and provinces") +
-  annotate("segment", x = -55, y = 36.8, xend = -68.6, yend = 44.6, colour = gry, linewidth = 0.4) +
   annotate("label", x = -47, y = -4, hjust = 0.5, size = 3.7, linewidth = 0.3, lineheight = 1.05,
            label = "Brazil supplies about 82% of\nthe hardwood pulp the U.S. buys,\nmostly from eucalyptus plantations") +
-  annotate("text", x = -69.2, y = 43.2, label = "MAINE", colour = grn, fontface = "bold", size = 4, hjust = 0) +
+  annotate("text", x = -69.2, y = 48.3, label = "MAINE", colour = grn, fontface = "bold", size = 4, hjust = 0.5) +
   coord_quickmap(xlim = c(-98, -32), ylim = c(-26, 52), expand = FALSE) +
   labs(title = "Follow the wood",
        subtitle = "When a mill closes, Americans keep buying paper. The fiber comes from farther away,\nand some of Maine's own wood leaves the state before anyone turns it into a product.",
