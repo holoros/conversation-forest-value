@@ -12,4 +12,4 @@ Graphic: Center for Research on Sustainable Forests, University of Maine.
 
 Note (November 10, 2026): the Millinocket and Ashland (WholeTrees) markers and labels on the mill towns map were added to the PNG by hand after the R run, and the Millinocket label was shifted left to clear the Ashland marker; the R script does not yet draw them.
 
-Note (November 10, 2026): the follow the wood map was rerun in R with label collisions cleared and the Brazil route ending on the U.S. coast. `2024_maine-wood-exports-world-map_DATA.png` is the Maine Forest Dashboard's world export map (U.S. Census Bureau, USA Trade Online, 2024), copied here unchanged for use in the article.
+Note (November 10, 2026): the follow the wood map was rerun in R with label collisions cleared and the Brazil route ending on the U.S. coast. `2024_maine-wood-exports-world-map_DATA.png` is the Maine Forest Dashboard's world export map (U.S. Census Bureau, USA Trade Online, 2024), copied here for use in the article with white side margins added to fit the figure slot.
