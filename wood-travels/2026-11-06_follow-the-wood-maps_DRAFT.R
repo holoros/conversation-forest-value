@@ -32,7 +32,7 @@ a <- ggplot() +
            label = "Macon, Ga.\nSaint John pulp becomes\ntissue, 1,000+ miles away") +
   annotate("label", x = -64.5, y = 48.6, hjust = 0, size = 3.7, linewidth = 0.3, lineheight = 1.05,
            label = "Saint John, N.B.\nPulp mill") +
-  annotate("segment", x = -52, y = 36.5, xend = -68.6, yend = 44.6, colour = gry, linewidth = 0.4) +
+  annotate("segment", x = -54, y = 38.1, xend = -68.6, yend = 44.6, colour = gry, linewidth = 0.4) +
   annotate("label", x = -48, y = 33.5, hjust = 0.5, size = 3.7, linewidth = 0.3, lineheight = 1.05,
            label = "Maine logs cross the border to Quebec\nsawmills. In 2023, about 2 million tons of\nMaine's harvest left the state unprocessed,\nwhile 2.7 million tons came in from\nneighboring states and provinces") +
   annotate("label", x = -47, y = -4, hjust = 0.5, size = 3.7, linewidth = 0.3, lineheight = 1.05,
