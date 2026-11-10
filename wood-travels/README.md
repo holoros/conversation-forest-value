@@ -9,3 +9,5 @@ Two maps for "Cutting a tree can help save a forest, but only if the wood has so
 Routes are schematic and show origin and destination, not shipping paths. Figures cited on the maps come from J.D. Irving, Rabobank, the Maine Forest Service 2023 Wood Processor Report (via maineforestdashboard.com), Maine TREE Foundation, Boston Globe, Mainebiz, UMaine News, Maine Public and the UMaine Process Development Center.
 
 Graphic: Center for Research on Sustainable Forests, University of Maine.
+
+Note (November 10, 2026): the Millinocket marker and label on the mill towns map were added to the PNG by hand after the R run; the R script does not yet draw them.
