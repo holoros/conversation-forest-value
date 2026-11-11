@@ -110,7 +110,7 @@ fig.patch.set_facecolor("white")
 fig.text(0.04, 0.955, "Maine's wood mostly stays in the U.S., and most exports go to Canada", fontfamily="Liberation Serif",
          fontweight="bold", fontsize=19.5, color=GRN, ha="left", va="center")
 fig.text(0.04, 0.917, f"Other states took about {usd(net_pos)} more of Maine's wood, pulp, and paper than they sent back in 2022. "
-         f"Exports abroad were {usd(total_exp)} in 2024,\nand Canada took 67% of them. Circle area is the dollar value on one scale for both maps.",
+         f"Exports abroad were {usd(total_exp)} in 2024,\nand Canada took 67% of them. Circle area is the dollar value.",
          fontsize=10.2, color=INK, ha="left", va="center", linespacing=1.3)
 
 # ---- world map ----
@@ -130,9 +130,10 @@ for c, v in exp:
     x, y = equal_earth(np.array([lon]), np.array([lat]))
     pts.append((c, v, x[0], y[0]))
 lab = {"Canada": (-16, 12, "right"), "China": (9, -9, "left"), "Belgium": (-7, 9, "right"), "Italy": (8, -8, "left"),
-       "Germany": (7, 9, "left"), "Mexico": (-8, -2, "right"), "Costa Rica": (-6, -6, "right"), "Brazil": (6, -5, "left"),
-       "Colombia": (6, 0, "left"), "Dominican Republic": (7, 5, "left"), "Uzbekistan": (0, 8, "center"), "Indonesia": (0, -9, "center")}
+       "Germany": (7, 9, "left"), "Mexico": (-8, -2, "right")}
 for c, v, x, y in sorted(pts, key=lambda p: -p[1]):
+    if v < 1:                                  # simplified: countries under $1M are not drawn
+        continue
     if c in lab:
         ax.plot([mx[0], x], [my[0], y], color=ORG, lw=0.5 + 2.2 * math.sqrt(v / 385.3), alpha=0.35, zorder=2, solid_capstyle="round")
     ax.scatter([x], [y], s=(2 * rad(v)) ** 2, c=ORG, edgecolors="white", linewidths=0.6, zorder=3, alpha=0.93)
@@ -153,13 +154,13 @@ for name, rings in states.items():
     add_poly(bx, rings, albers, facecolor="#BFD3E3" if name == "Maine" else LAND, edgecolor="white", linewidth=0.45, zorder=1)
 bx.set_xlim(-0.40, 0.42); bx.set_ylim(-0.235, 0.25)
 slab = {"New York": (-4, 22, "right"), "Indiana": (-10, -12, "right"), "North Carolina": (11, -9, "left"),
-        "Wisconsin": (-12, 9, "right"), "Georgia": (9, -9, "left"), "Texas": (0, -11, "center"), "New Hampshire": (14, 10, "left"), "Massachusetts": (13, -3, "left")}
+        "Wisconsin": (-12, 9, "right"), "New Hampshire": (14, 10, "left"), "Massachusetts": (13, -3, "left")}
 for r in sorted(cfs, key=lambda r: -abs(float(r["net_musd"]))):
     net, low = float(r["net_musd"]), r["low_confidence"] == "TRUE"
     lon, lat = centroid(states[r["state"]])
     x, y = albers(np.array([lon]), np.array([lat]))
     col = ORG if net > 0 else NAV
-    bx.scatter(x, y, s=(2 * rad(abs(net))) ** 2, facecolors="white" if low else col, edgecolors=col, linewidths=1.5 if low else 0.6, zorder=3, alpha=0.93)
+    bx.scatter(x, y, s=(2 * rad(abs(net))) ** 2, facecolors="none" if low else col, edgecolors=col, linewidths=1.5 if low else 0.6, zorder=3, alpha=0.93)
     if r["state"] in slab:
         dx, dy, ha = slab[r["state"]]
         txt = f"{r['state']} {usd(net)}" if net > 0 else f"{r['state']} sends Maine {usd(-net)} more"
@@ -169,15 +170,15 @@ fig.text(0.04, 0.345, "NET SHIPMENTS TO OTHER STATES, 2022", ha="left", va="cent
 # ---- key and notes ----
 kx = fig.add_axes([0.60, 0.035, 0.38, 0.315]); kx.set_axis_off(); kx.set_xlim(0, 1); kx.set_ylim(0, 1)
 kx.text(0.0, 0.93, "HOW TO READ IT", fontsize=9.6, fontweight="bold", color=INK, va="center")
-xs = [0.07, 0.22, 0.44, 0.76]
-for xk, v in zip(xs, (5, 50, 385, 1265)):
+xs = [0.10, 0.34, 0.70]
+for xk, v in zip(xs, (50, 385, 1265)):
     kx.scatter([xk], [0.70], s=(2 * rad(v)) ** 2, c=ORG, edgecolors="white", linewidths=0.6, clip_on=False)
     kx.text(xk, 0.47, usd(v), ha="center", va="center", fontsize=9.2, fontweight="bold", color=INK)
 notes = [(ORG, True, "takes more from Maine than it sends"), (NAV, True, "sends Maine more than it takes"),
          (ORG, False, "open circle: survey uncertainty above 30%")]
 for i, (col, filled, t) in enumerate(notes):
     yk = 0.30 - 0.075 * i
-    kx.scatter([0.03], [yk], s=42, facecolors=col if filled else "white", edgecolors=col, linewidths=1.4, clip_on=False)
+    kx.scatter([0.03], [yk], s=42, facecolors=col if filled else "none", edgecolors=col, linewidths=1.4, clip_on=False)
     kx.text(0.075, yk, t, fontsize=8.8, color=INK, va="center")
 kx.text(0.0, -0.02, "State figures are floors because the survey\nwithholds some cells.", fontsize=8.4, color=GRY, va="bottom", linespacing=1.25)
 
