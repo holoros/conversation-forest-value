@@ -104,7 +104,7 @@ for rows, col in ((oth, LBLU), (saw, NAV)):
 closed = [  # town label, lon, lat, label lon, label lat
     ("Millinocket\nclosed 2008", -68.710, 45.657, -70.21, 46.11),
     ("East Millinocket\nclosed 2014", -68.574, 45.627, -68.38, 46.37),
-    ("Bucksport\nclosed 2014", -68.795, 44.574, -67.71, 43.92),
+    ("Bucksport\nclosed 2014", -68.795, 44.574, -68.47, 43.93),
     ("Lincoln\nclosed 2015", -68.505, 45.362, -66.42, 45.80),
     ("Old Town\nclosed 2015, reopened,\nclosed again 2023", -68.645, 44.934, -66.72, 44.42),
     ("Madison\nclosed 2016; TimberHP now\nmakes insulation there", -69.880, 44.798, -72.47, 44.83),
@@ -121,6 +121,9 @@ pulp = [  # operating pulp mills: name, note, lon, lat, text dx, dy, ha
     ("Baileyville", "paused wood buying in 2025", -67.403, 45.156, 0.11, 0.0, "left"),
     ("Saint John, N.B.", "$1.1B upgrade announced 2024", -66.060, 45.270, -0.33, 0.15, "center"),
 ]
+paper = [  # paper mill still operating without a pulp mill
+    ("Westbrook", "paper machine shut in 2020", -70.371, 43.677, 0.11, 0.03, "left"),
+]
 box = dict(boxstyle="round,pad=0.32,rounding_size=0.18", fc="white", ec=INK, lw=0.7)
 
 
@@ -136,8 +139,9 @@ for t, x, y, lx, ly in newuse:
 ax.scatter([c[1] for c in closed], [c[2] for c in closed], marker="x", s=150, c=RED, linewidths=3.0, zorder=8)
 ax.scatter([c[1] for c in newuse], [c[2] for c in newuse], marker="^", s=170, c=GRN, edgecolors="white", linewidths=0.6, zorder=8)
 ax.scatter([p[2] for p in pulp], [p[3] for p in pulp], marker="s", s=120, c=ORG, edgecolors="white", linewidths=0.9, zorder=8)
+ax.scatter([p[2] for p in paper], [p[3] for p in paper], marker="s", s=105, c="white", edgecolors=ORG, linewidths=2.2, zorder=8)
 halo = [pe.withStroke(linewidth=2.6, foreground="white")]
-for n, note, x, y, dx, dy, ha in pulp:
+for n, note, x, y, dx, dy, ha in pulp + paper:
     ax.text(x + dx, y + dy + 0.045, n, ha=ha, va="center", fontsize=8.4, color=INK, fontweight="bold", path_effects=halo, zorder=9)
     ax.text(x + dx, y + dy - 0.045, note, ha=ha, va="center", fontsize=7.8, color=INK, path_effects=halo, zorder=9)
 
@@ -148,19 +152,23 @@ ax.text(-73.3, 47.25, f"Quebec: {len(q)} wood mills operate within\n30 miles of 
 ax.text(-73.3, 47.03, "Dot size follows each mill's permitted wood volume", ha="left", va="center", fontsize=7.8, color=NAV,
         path_effects=halo, zorder=9)
 
+ax.text(-66.35, 47.55, "Other New Brunswick\nmills are not mapped", ha="center", va="center", fontsize=7.8, color=GRY, fontstyle="italic",
+        linespacing=1.1, path_effects=halo, zorder=9)
+
 # ownership box
-ax.add_patch(FancyBboxPatch((-70.10, 42.99), 2.16, 0.70, boxstyle="round,pad=0,rounding_size=0.05", fc="white", ec=INK, lw=0.7, zorder=10))
-ax.text(-70.00, 43.605, "Who owns the forest", ha="left", va="center", fontsize=9.8, color=GRN, fontweight="bold", zorder=11)
-ax.text(-70.00, 43.525, "Maine: 92% private\nQuebec: 92% public overall\nNew Brunswick: 51% public", ha="left", va="top",
+ax.add_patch(FancyBboxPatch((-70.10, 42.99), 2.16, 0.53, boxstyle="round,pad=0,rounding_size=0.05", fc="white", ec=INK, lw=0.7, zorder=10))
+ax.text(-70.00, 43.435, "Who owns the forest", ha="left", va="center", fontsize=9.8, color=GRN, fontweight="bold", zorder=11)
+ax.text(-70.00, 43.355, "Maine: 92% private\nQuebec: 92% public overall\nNew Brunswick: 51% public", ha="left", va="top",
         fontsize=9.0, color=INK, linespacing=1.25, zorder=11)
-ax.text(-70.00, 43.075, "Other N.B. mills are not mapped", ha="left", va="center", fontsize=7.8, color=GRY, fontstyle="italic", zorder=11)
 
 handles = [
     Line2D([], [], marker="x", color="none", markeredgecolor=RED, markersize=9, markeredgewidth=2.6, label="Pulp or paper mill closed or idled"),
     Line2D([], [], marker="s", color="none", markerfacecolor=ORG, markeredgecolor="white", markersize=9, label="Pulp mill still operating"),
+    Line2D([], [], marker="s", color="none", markerfacecolor="white", markeredgecolor=ORG, markeredgewidth=1.8, markersize=8, label="Paper mill still operating"),
     Line2D([], [], marker="o", color="none", markerfacecolor=NAV, markeredgecolor="white", markersize=8, label="Quebec sawmill"),
     Line2D([], [], marker="o", color="none", markerfacecolor=LBLU, markeredgecolor="white", markersize=8, label="Other Quebec wood mill"),
     Line2D([], [], marker="^", color="none", markerfacecolor=GRN, markeredgecolor="white", markersize=9, label="New use for wood"),
+    Line2D([], [], marker="s", color="none", markerfacecolor="#96C4A0", markeredgecolor="none", markersize=10, label="Forest"),
 ]
 leg = ax.legend(handles=handles, loc="lower right", bbox_to_anchor=(0.995, 0.012), fontsize=8.4, frameon=True, framealpha=1,
                 edgecolor=INK, fancybox=True, borderpad=0.7, labelspacing=0.55, handletextpad=0.5)
@@ -169,7 +177,7 @@ leg.get_frame().set_linewidth(0.7); leg.set_zorder(12)
 fig.text(0.126, 0.955, "When a pulp mill closes, sawmills feel it too", fontfamily="Liberation Serif", fontweight="bold", fontsize=21,
          color=GRN, ha="left", va="center")
 fig.text(0.126, 0.899, "Sawmills sell their chips and sawdust to pulp mills, so each closure reaches well beyond the mill town.\n"
-         "Maine has lost seven paper mills since 2008, and the survivors have needed costly upgrades. Green shading is forest.",
+         "Maine has lost seven paper mills since 2008, and the survivors have needed costly upgrades.",
          fontsize=10.6, color=INK, ha="left", va="center", linespacing=1.3)
 fig.savefig(OUT, dpi=300, facecolor="white")
 print(len(q), len(saw), "saved", OUT)
