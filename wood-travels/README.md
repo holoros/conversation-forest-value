@@ -36,3 +36,4 @@ Note (November 10, 2026, final pass): the mill map now shows all five Maine mill
 - Pulp and paper mills still operating now share one solid orange square.
 - Removed the "Other New Brunswick mills are not mapped" note.
 - Later on November 11, 2026: added the Golden Road and Stud Mill Road from `2026-11-11_golden-and-stud-mill-roads_DATA.csv` (U.S. Census Bureau TIGERweb named local road segments, simplified, joined across unnamed gaps with straight lines), and Madison now carries a green triangle under its red X (closed mill with a new use).
+- Also November 11, 2026: all sawmills and other wood mills now share one blue; schematic arrows show Maine logs crossing to Quebec and lumber returning to U.S. buyers (Maine TREE Foundation; Bangor Daily News, December 17, 2025); Millinocket carries a green triangle under its red X for the planned biofuel plant at the mill site (Maine Public, January 31, 2025).

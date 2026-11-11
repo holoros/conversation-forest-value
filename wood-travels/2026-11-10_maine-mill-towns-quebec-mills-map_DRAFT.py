@@ -97,13 +97,14 @@ def dot_size(r):
     return 28 + 240 * math.sqrt(upper / 1.3e6)
 
 
-for rows, col in ((oth, LBLU), (saw, NAV)):
+for rows, col in ((oth, NAV), (saw, NAV)):
     rows = sorted(rows, key=dot_size, reverse=True)
     ax.scatter([float(r["longitude"]) for r in rows], [float(r["latitude"]) for r in rows], s=[dot_size(r) for r in rows], c=col,
                edgecolors="white", linewidths=0.6, zorder=6, alpha=0.92)
 
 # Golden Road and Stud Mill Road (private logging roads), from Census TIGERweb named segments joined in order
 GOLD = "#B8860B"
+BRN = "#6B3A1E"
 halo = [pe.withStroke(linewidth=2.6, foreground="white")]
 rd = {}
 for r in csv.DictReader(open(os.path.join(HERE, "2026-11-11_golden-and-stud-mill-roads_DATA.csv"), encoding="utf-8")):
@@ -115,13 +116,20 @@ for nm, pts in rd.items():
 ax.text(-69.62, 46.06, "Golden Road", ha="center", va="center", fontsize=7.8, color="#7A5A00", fontstyle="italic", fontweight="bold", rotation=-6, path_effects=halo, zorder=9)
 ax.text(-68.22, 45.11, "Stud Mill Road", ha="center", va="center", fontsize=7.8, color="#7A5A00", fontstyle="italic", fontweight="bold", path_effects=halo, zorder=9)
 
+# Logs cross to Quebec sawmills and lumber comes back to U.S. buyers (schematic)
+from matplotlib.patches import FancyArrowPatch
+for (x0, y0, x1, y1, rad, txt, ty) in ((-69.10, 46.80, -69.98, 46.80, 0.12, "Maine logs", 46.90), (-70.12, 46.38, -69.25, 46.38, 0.12, "lumber to U.S. buyers", 46.27)):
+    ax.add_patch(FancyArrowPatch((x0, y0), (x1, y1), connectionstyle=f"arc3,rad={rad}", arrowstyle="-|>", mutation_scale=16, lw=4.2, color="white", zorder=6.4))
+    ax.add_patch(FancyArrowPatch((x0, y0), (x1, y1), connectionstyle=f"arc3,rad={rad}", arrowstyle="-|>", mutation_scale=14, lw=2.2, color=BRN, zorder=6.5))
+    ax.text((x0 + x1) / 2, ty, txt, ha="center", va="center", fontsize=7.8, color=BRN, fontweight="bold", path_effects=halo, zorder=9)
+
 # Maine and New Brunswick sawmills from public directories (town-level placement, not sized)
 PUR = "#7B4BA3"
 ms = list(csv.DictReader(open(os.path.join(HERE, "2026-11-11_maine-new-brunswick-sawmills_DATA.csv"), encoding="utf-8")))
-ax.scatter([float(r["longitude"]) for r in ms], [float(r["latitude"]) for r in ms], s=52, c=PUR, edgecolors="white", linewidths=0.7, zorder=7)
+ax.scatter([float(r["longitude"]) for r in ms], [float(r["latitude"]) for r in ms], s=52, c=NAV, edgecolors="white", linewidths=0.7, zorder=7)
 
 closed = [  # town label, lon, lat, label lon, label lat
-    ("Millinocket\nclosed 2008", -68.710, 45.657, -69.78, 45.40),
+    ("Millinocket\nclosed 2008; biofuel\nplant planned", -68.710, 45.657, -69.72, 45.42),
     ("East Millinocket\nclosed 2014", -68.574, 45.627, -68.30, 46.22),
     ("Bucksport\nclosed 2014", -68.795, 44.574, -68.47, 43.93),
     ("Lincoln\nclosed 2015", -68.505, 45.362, -66.42, 45.80),
@@ -156,6 +164,7 @@ for t, x, y, lx, ly in closed:
     label(t, x, y, lx, ly)
 for t, x, y, lx, ly in newuse:
     label(t, x, y, lx, ly)
+ax.scatter([-68.710], [45.657], marker="^", s=330, c=GRN, edgecolors="white", linewidths=0.6, zorder=7.9)  # Millinocket: planned biofuel plant at the mill site
 ax.scatter([-69.880], [44.798], marker="^", s=330, c=GRN, edgecolors="white", linewidths=0.6, zorder=7.9)  # Madison: closed mill with a new use
 ax.scatter([c[1] for c in closed], [c[2] for c in closed], marker="x", s=150, c=RED, linewidths=3.0, zorder=8)
 ax.scatter([c[1] for c in newuse], [c[2] for c in newuse], marker="^", s=170, c=GRN, edgecolors="white", linewidths=0.6, zorder=8)
@@ -170,7 +179,7 @@ ax.text(-73.3, 47.25, f"Quebec: {len(q)} wood mills operate within\n30 miles of 
         fontsize=9.8, color=NAV, fontweight="bold", linespacing=1.15, zorder=9,
         bbox=dict(boxstyle="round,pad=0.35,rounding_size=0.18", fc="white", ec="none"))
 
-ax.text(-73.3, 47.03, "Dot size follows each mill's permitted wood volume", ha="left", va="center", fontsize=7.8, color=NAV,
+ax.text(-73.3, 46.99, "Quebec dot size follows permitted wood volume;\nMaine and New Brunswick dots are not sized", ha="left", va="center", linespacing=1.15, fontsize=7.8, color=NAV,
         path_effects=halo, zorder=9)
 
 
@@ -183,9 +192,8 @@ ax.text(-70.00, 43.355, "Maine: 92% private\nQuebec: 92% public overall\nNew Bru
 handles = [
     Line2D([], [], marker="x", color="none", markeredgecolor=RED, markersize=9, markeredgewidth=2.6, label="Pulp or paper mill closed or idled"),
     Line2D([], [], marker="s", color="none", markerfacecolor=ORG, markeredgecolor="white", markersize=9, label="Pulp or paper mill still operating"),
-    Line2D([], [], marker="o", color="none", markerfacecolor=NAV, markeredgecolor="white", markersize=8, label="Quebec sawmill"),
-    Line2D([], [], marker="o", color="none", markerfacecolor=LBLU, markeredgecolor="white", markersize=8, label="Other Quebec wood mill"),
-    Line2D([], [], marker="o", color="none", markerfacecolor=PUR, markeredgecolor="white", markersize=7, label="Maine or New Brunswick sawmill"),
+    Line2D([], [], marker="o", color="none", markerfacecolor=NAV, markeredgecolor="white", markersize=8, label="Sawmill or other wood mill"),
+    Line2D([], [], marker=r"$\rightarrow$", color="none", markerfacecolor=BRN, markeredgecolor=BRN, markersize=13, label="Logs out, lumber back"),
     Line2D([], [], color=GOLD, lw=2.0, label="Private logging road"),
     Line2D([], [], marker="^", color="none", markerfacecolor=GRN, markeredgecolor="white", markersize=9, label="New use for wood"),
     Line2D([], [], marker="s", color="none", markerfacecolor="#96C4A0", markeredgecolor="none", markersize=10, label="Forest"),
