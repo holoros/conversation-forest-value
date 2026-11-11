@@ -102,13 +102,26 @@ for rows, col in ((oth, LBLU), (saw, NAV)):
     ax.scatter([float(r["longitude"]) for r in rows], [float(r["latitude"]) for r in rows], s=[dot_size(r) for r in rows], c=col,
                edgecolors="white", linewidths=0.6, zorder=6, alpha=0.92)
 
+# Golden Road and Stud Mill Road (private logging roads), from Census TIGERweb named segments joined in order
+GOLD = "#B8860B"
+halo = [pe.withStroke(linewidth=2.6, foreground="white")]
+rd = {}
+for r in csv.DictReader(open(os.path.join(HERE, "2026-11-11_golden-and-stud-mill-roads_DATA.csv"), encoding="utf-8")):
+    rd.setdefault(r["road"], []).append((int(r["segment"]), int(r["order"]), float(r["longitude"]), float(r["latitude"])))
+for nm, pts in rd.items():
+    pts.sort()
+    ax.plot([p[2] for p in pts], [p[3] for p in pts], color="white", lw=3.6, zorder=5, solid_capstyle="round")
+    ax.plot([p[2] for p in pts], [p[3] for p in pts], color=GOLD, lw=2.0, zorder=5.1, solid_capstyle="round")
+ax.text(-69.62, 46.06, "Golden Road", ha="center", va="center", fontsize=7.8, color="#7A5A00", fontstyle="italic", fontweight="bold", rotation=-6, path_effects=halo, zorder=9)
+ax.text(-68.22, 45.11, "Stud Mill Road", ha="center", va="center", fontsize=7.8, color="#7A5A00", fontstyle="italic", fontweight="bold", path_effects=halo, zorder=9)
+
 # Maine and New Brunswick sawmills from public directories (town-level placement, not sized)
 PUR = "#7B4BA3"
 ms = list(csv.DictReader(open(os.path.join(HERE, "2026-11-11_maine-new-brunswick-sawmills_DATA.csv"), encoding="utf-8")))
 ax.scatter([float(r["longitude"]) for r in ms], [float(r["latitude"]) for r in ms], s=52, c=PUR, edgecolors="white", linewidths=0.7, zorder=7)
 
 closed = [  # town label, lon, lat, label lon, label lat
-    ("Millinocket\nclosed 2008", -68.710, 45.657, -70.21, 46.11),
+    ("Millinocket\nclosed 2008", -68.710, 45.657, -69.78, 45.40),
     ("East Millinocket\nclosed 2014", -68.574, 45.627, -68.30, 46.22),
     ("Bucksport\nclosed 2014", -68.795, 44.574, -68.47, 43.93),
     ("Lincoln\nclosed 2015", -68.505, 45.362, -66.42, 45.80),
@@ -143,6 +156,7 @@ for t, x, y, lx, ly in closed:
     label(t, x, y, lx, ly)
 for t, x, y, lx, ly in newuse:
     label(t, x, y, lx, ly)
+ax.scatter([-69.880], [44.798], marker="^", s=330, c=GRN, edgecolors="white", linewidths=0.6, zorder=7.9)  # Madison: closed mill with a new use
 ax.scatter([c[1] for c in closed], [c[2] for c in closed], marker="x", s=150, c=RED, linewidths=3.0, zorder=8)
 ax.scatter([c[1] for c in newuse], [c[2] for c in newuse], marker="^", s=170, c=GRN, edgecolors="white", linewidths=0.6, zorder=8)
 ax.scatter([p[2] for p in pulp], [p[3] for p in pulp], marker="s", s=120, c=ORG, edgecolors="white", linewidths=0.9, zorder=8)
@@ -172,6 +186,7 @@ handles = [
     Line2D([], [], marker="o", color="none", markerfacecolor=NAV, markeredgecolor="white", markersize=8, label="Quebec sawmill"),
     Line2D([], [], marker="o", color="none", markerfacecolor=LBLU, markeredgecolor="white", markersize=8, label="Other Quebec wood mill"),
     Line2D([], [], marker="o", color="none", markerfacecolor=PUR, markeredgecolor="white", markersize=7, label="Maine or New Brunswick sawmill"),
+    Line2D([], [], color=GOLD, lw=2.0, label="Private logging road"),
     Line2D([], [], marker="^", color="none", markerfacecolor=GRN, markeredgecolor="white", markersize=9, label="New use for wood"),
     Line2D([], [], marker="s", color="none", markerfacecolor="#96C4A0", markeredgecolor="none", markersize=10, label="Forest"),
 ]

@@ -35,3 +35,4 @@ Note (November 10, 2026, final pass): the mill map now shows all five Maine mill
 - Added 32 sawmills as unsized purple dots from `2026-11-11_maine-new-brunswick-sawmills_DATA.csv`: 16 Maine softwood mills from the NELMA member mills directory (read November 11, 2026) and the 16 New Brunswick sawmills inside the map frame from the Logging & Sawmilling Journal 2023 mill directory map (3 more fall outside the frame). Placement is at town level. Hardwood and non-member Maine mills are not included.
 - Pulp and paper mills still operating now share one solid orange square.
 - Removed the "Other New Brunswick mills are not mapped" note.
+- Later on November 11, 2026: added the Golden Road and Stud Mill Road from `2026-11-11_golden-and-stud-mill-roads_DATA.csv` (U.S. Census Bureau TIGERweb named local road segments, simplified, joined across unnamed gaps with straight lines), and Madison now carries a green triangle under its red X (closed mill with a new use).
