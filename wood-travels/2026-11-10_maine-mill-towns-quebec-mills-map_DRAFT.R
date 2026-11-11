@@ -23,7 +23,7 @@ closed <- data.frame(
           "Old Town\nclosed 2015, reopened,\nclosed again 2023", "Madison\nclosed 2016; TimberHP now\nmakes insulation there", "Jay\nclosed 2023"),
   lon = c(-68.710, -68.574, -68.795, -68.505, -68.645, -69.880, -70.216),
   lat = c(45.657, 45.627, 44.574, 45.362, 44.934, 44.798, 44.504),
-  nx = c(-1.5, 1.5, 1.3, 1.6, 1.7, -1.6, -1.4), ny = c(0.45, 0.5, -0.45, 0.05, -0.15, 0.55, -0.35))
+  nx = c(-1.5, 1.5, 1.3, 1.6, 1.7, -2.5, -1.9), ny = c(0.45, 0.5, -0.45, 0.05, -0.15, -0.3, -0.8))
 newu <- data.frame(lab = c("Ashland\nWholeTrees makes beams\nfrom whole tree trunks", "Saco\nTanbark makes food\ncontainers from wood fiber"),
   lon = c(-68.406, -70.443), lat = c(46.631, 43.501), nx = c(1.5, -1.3), ny = c(0.35, -0.2))
 can <- map_data("worldHires", xlim = c(-76, -63), ylim = c(41, 50)); states <- map_data("state")
@@ -43,10 +43,10 @@ p <- ggplot() +
   annotate("text", x = -66.6, y = 46.6, label = "New Brunswick\nmills not mapped", size = 3.2, colour = gry, fontface = "italic", lineheight = 1) +
   scale_fill_manual(values = c("Sawmill" = nav, "Other wood mill" = lblu), name = NULL) +
   guides(fill = guide_legend(override.aes = list(size = 4))) +
-  coord_quickmap(xlim = c(-73.6, -65.4), ylim = c(42.95, 47.75), expand = FALSE) +
-  labs(title = "Maine lost its paper mills while Quebec's mills line the border",
+  coord_quickmap(xlim = c(-73.6, -65.4), ylim = c(42.95, 47.95), expand = FALSE) +
+  labs(title = "Maine's lost paper mills and Quebec's border mills",
        subtitle = "Red X marks a Maine town that lost a paper mill since 2008. Green triangles mark new uses for wood.\nBlue dots are Quebec wood mills within 30 miles of the Maine border.") + th +
   theme(legend.position = c(0.99, 0.02), legend.justification = c(1, 0), legend.background = element_rect(fill = "white", colour = NA),
         legend.text = element_text(size = 10), legend.margin = margin(4, 8, 4, 6))
-ggsave("2026-11-10_maine-mill-towns-quebec-mills-map_DRAFT.png", p, width = 10, height = 7.6, dpi = 300, bg = "white")
+ggsave("2026-11-10_maine-mill-towns-quebec-mills-map_DRAFT.png", p, width = 10, height = 7.9, dpi = 300, bg = "white")
 cat(nq, ns, "done\n")
