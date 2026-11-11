@@ -44,7 +44,7 @@ p <- ggplot() +
                    box.padding = 0.5, point.padding = 0.6, min.segment.length = 0, seed = 7, nudge_x = newu$nx, nudge_y = newu$ny, segment.colour = gry) +
   annotate("label", x = -73.3, y = 47.25, hjust = 0, size = 3.9, lineheight = 1.08, linewidth = 0, fill = "white", colour = nav, fontface = "bold",
            label = sprintf("Quebec: %d wood mills operate within\n30 miles of Maine, %d of them sawmills", nq, ns)) +
-  annotate("text", x = -66.35, y = 47.25, label = "Other New Brunswick\nmills not mapped", size = 3.2, colour = gry, fontface = "italic", lineheight = 1) +
+  annotate("label", x = -66.05, y = 45.45, label = "Other New Brunswick\nmills not mapped", size = 3.1, colour = gry, fill = "white", fontface = "italic", lineheight = 1, linewidth = 0) +
   scale_fill_manual(values = c("Sawmill" = nav, "Other wood mill" = lblu), name = NULL) +
   guides(fill = guide_legend(override.aes = list(size = 4))) +
   coord_quickmap(xlim = c(-73.6, -65.4), ylim = c(42.95, 47.95), expand = FALSE) +
