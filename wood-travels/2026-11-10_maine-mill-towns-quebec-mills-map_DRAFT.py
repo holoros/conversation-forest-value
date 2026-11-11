@@ -80,7 +80,7 @@ for gid, rings in canada + states:
     if pt is not None:
         ax.add_patch(pt)
 forest = np.asarray(Image.open(os.path.join(HERE, "2020_cec-land-cover-forest-layer_DATA.png")).convert("RGBA")) / 255.0
-ax.imshow(forest, extent=(X0, X1, Y0, Y1), zorder=2, interpolation="bilinear", aspect="auto")
+ax.imshow(forest, extent=(X0, X1, Y0, Y1), zorder=2, interpolation="bilinear", aspect="auto", alpha=0.62)
 for gid, rings in canada + states:
     pt = patch(rings, facecolor="none", edgecolor="white", linewidth=0.7, zorder=3)
     if pt is not None:
@@ -113,8 +113,8 @@ for nm, pts in rd.items():
     pts.sort()
     ax.plot([p[2] for p in pts], [p[3] for p in pts], color="white", lw=3.6, zorder=5, solid_capstyle="round")
     ax.plot([p[2] for p in pts], [p[3] for p in pts], color=GOLD, lw=2.0, zorder=5.1, solid_capstyle="round")
-ax.text(-69.72, 45.80, "Golden Road", ha="center", va="center", fontsize=7.8, color="#7A5A00", fontstyle="italic", fontweight="bold", rotation=-6, path_effects=halo, zorder=9)
-ax.text(-68.22, 45.11, "Stud Mill Road", ha="center", va="center", fontsize=7.8, color="#7A5A00", fontstyle="italic", fontweight="bold", path_effects=halo, zorder=9)
+ax.text(-69.72, 45.80, "Golden Road", ha="center", va="center", fontsize=8.8, color="#7A5A00", fontstyle="italic", fontweight="bold", rotation=-6, path_effects=halo, zorder=9)
+ax.text(-68.22, 45.11, "Stud Mill Road", ha="center", va="center", fontsize=8.8, color="#7A5A00", fontstyle="italic", fontweight="bold", path_effects=halo, zorder=9)
 
 # Logs cross to Quebec sawmills and lumber comes back to U.S. buyers (schematic)
 from matplotlib.patches import FancyArrowPatch
@@ -124,15 +124,16 @@ from matplotlib.patches import FancyArrowPatch
 # Earlier note: arrow width followed the Maine Forest Service 2023 Wood Processor Report: 2.0 million green tons of Maine wood left the state
 # unprocessed and 2.7 million green tons came in from other states and provinces. Statistics Canada adds about 0.8 million tons
 # of lumber, pulp, and paper sent from Canada to Maine (2023_maine-canada-wood-trade-statcan_DATA.csv), named in the label only.
-for (x0, y0, x1, y1, rad, txt, tx, ty, mt) in ((-69.05, 46.86, -69.98, 46.86, 0.12, "Out of Maine\n2.0 million tons raw wood\n0.2 million tons products", -69.28, 47.07, 2.2),
-                                              (-70.10, 46.50, -69.20, 46.50, 0.12, "Into Maine\n2.7 million tons raw wood\n0.8 million tons products", -70.00, 46.23, 3.5)):
+for (x0, y0, x1, y1, rad, txt, tx, ty, mt) in ((-69.05, 46.86, -69.98, 46.86, 0.12, "out", -69.30, 47.01, 2.2),
+                                              (-70.10, 46.50, -69.20, 46.50, 0.12, "in", -69.75, 46.33, 3.5)):
     lw = 1.5 * mt
     ax.add_patch(FancyArrowPatch((x0, y0), (x1, y1), connectionstyle=f"arc3,rad={rad}", arrowstyle="-|>", mutation_scale=8 + 4 * mt, lw=lw + 2.0, color="white", zorder=6.4))
     ax.add_patch(FancyArrowPatch((x0, y0), (x1, y1), connectionstyle=f"arc3,rad={rad}", arrowstyle="-|>", mutation_scale=6 + 4 * mt, lw=lw, color=BRN, zorder=6.5))
-    ax.text(tx, ty, txt, ha="left", va="center", fontsize=7.6, color=BRN, fontweight="bold", linespacing=1.1, path_effects=halo, zorder=9)
-# Canada's public investment note
-ax.text(-73.3, 46.47, "Canada has committed more than\nC$2 billion to its forest sector since\nAugust 2025 and added C$400 million\nmore in June 2026", ha="left", va="center",
-        fontsize=8.2, color=INK, linespacing=1.2, zorder=9, bbox=dict(boxstyle="round,pad=0.35", fc="white", ec=INK, lw=0.6))
+    ax.text(tx, ty, txt, ha="center", va="center", fontsize=9.2, color=BRN, fontweight="bold", path_effects=halo, zorder=9)
+ax.text(-73.3, 46.66, "Wood across Maine's borders, 2023", ha="left", va="center", fontsize=9.2, color=BRN, fontweight="bold", path_effects=halo, zorder=9)
+ax.text(-73.3, 46.38, "Out: 2.0 million tons raw wood (all neighbors)\n        0.2 million tons products (to Canada)\nIn:   2.7 million tons raw wood (all neighbors)\n        0.8 million tons products (from Canada)",
+        ha="left", va="center", fontsize=8.8, color=BRN, linespacing=1.3, path_effects=halo, zorder=9)
+# Canada's funding note moved to the caption on November 11, 2026
 
 # Maine and New Brunswick sawmills from public directories (town-level placement, not sized)
 PUR = "#7B4BA3"
@@ -149,7 +150,7 @@ ax.scatter([float(r["longitude"]) for r in known], [float(r["latitude"]) for r i
 closed = [  # town label, lon, lat, label lon, label lat
     ("Millinocket\nclosed 2008; biofuel\nplant planned", -68.710, 45.657, -69.92, 45.37),
     ("East Millinocket\nclosed 2014", -68.574, 45.627, -68.03, 46.19),
-    ("Bucksport\nclosed 2014", -68.795, 44.574, -68.47, 43.93),
+    ("Bucksport\nclosed 2014", -68.795, 44.574, -68.64, 43.94),
     ("Lincoln\nclosed 2015", -68.505, 45.362, -66.42, 45.80),
     ("Old Town\nclosed 2015, reopened,\nclosed again 2023", -68.645, 44.934, -66.72, 44.42),
     ("Madison\nclosed 2016; TimberHP now\nmakes insulation there", -69.880, 44.798, -72.47, 44.83),
@@ -174,7 +175,7 @@ box = dict(boxstyle="round,pad=0.32,rounding_size=0.18", fc="white", ec=INK, lw=
 
 
 def label(txt, x, y, lx, ly):
-    ax.annotate(txt, xy=(x, y), xytext=(lx, ly), ha="center", va="center", fontsize=8.6, color=INK, linespacing=1.12,
+    ax.annotate(txt, xy=(x, y), xytext=(lx, ly), ha="center", va="center", fontsize=9.2, color=INK, linespacing=1.12,
                 bbox=box, zorder=9, arrowprops=dict(arrowstyle="-", color=GRY, lw=0.9, shrinkA=0, shrinkB=5))
 
 
@@ -190,33 +191,32 @@ ax.scatter([p[2] for p in pulp], [p[3] for p in pulp], marker="s", s=120, c=ORG,
 ax.scatter([p[2] for p in paper], [p[3] for p in paper], marker="s", s=120, c=ORG, edgecolors="white", linewidths=0.9, zorder=8)
 halo = [pe.withStroke(linewidth=2.6, foreground="white")]
 for n, note, x, y, dx, dy, ha in pulp + paper:
-    ax.text(x + dx, y + dy + 0.045, n, ha=ha, va="center", fontsize=8.4, color=INK, fontweight="bold", path_effects=halo, zorder=9)
-    ax.text(x + dx, y + dy - 0.045, note, ha=ha, va="center", fontsize=7.8, color=INK, path_effects=halo, zorder=9)
+    ax.text(x + dx, y + dy + 0.05, n, ha=ha, va="center", fontsize=9.2, color=INK, fontweight="bold", path_effects=halo, zorder=9)
+    ax.text(x + dx, y + dy - 0.05, note, ha=ha, va="center", fontsize=8.6, color=INK, path_effects=halo, zorder=9)
 
 ax.text(-73.3, 47.25, f"Quebec: {len(q)} wood mills operate within\n30 miles of Maine, {len(saw)} of them sawmills", ha="left", va="center",
         fontsize=9.8, color=NAV, fontweight="bold", linespacing=1.15, zorder=9,
         bbox=dict(boxstyle="round,pad=0.35,rounding_size=0.18", fc="white", ec="none"))
 
-ax.text(-73.3, 46.99, "Dot size follows wood volume: Quebec by permit class,\nMaine and New Brunswick approximate, in three classes", ha="left", va="center", linespacing=1.15, fontsize=7.8, color=NAV,
-        path_effects=halo, zorder=9)
+ax.text(-73.3, 47.02, "Mill size, approximate", ha="left", va="center", fontsize=8.8, color=NAV, fontweight="bold", path_effects=halo, zorder=9)
+for kxx, cls, lab_ in ((-73.22, "small", "small"), (-72.55, "medium", "medium"), (-71.75, "large", "large")):
+    ax.scatter([kxx], [46.86], s=MS[cls], c=NAV, edgecolors="white", linewidths=0.6, zorder=9)
+    ax.text(kxx + 0.11 + 0.02 * (cls != "small"), 46.86, lab_, ha="left", va="center", fontsize=8.6, color=NAV, path_effects=halo, zorder=9)
 
 
 # ownership box
-ax.add_patch(FancyBboxPatch((-70.10, 42.99), 2.16, 0.53, boxstyle="round,pad=0,rounding_size=0.05", fc="white", ec=INK, lw=0.7, zorder=10))
-ax.text(-70.00, 43.435, "Who owns the forest", ha="left", va="center", fontsize=9.8, color=GRN, fontweight="bold", zorder=11)
-ax.text(-70.00, 43.355, "Maine: 92% private\nQuebec: 92% public overall\nNew Brunswick: 51% public", ha="left", va="top",
-        fontsize=9.0, color=INK, linespacing=1.25, zorder=11)
+# Ownership box moved to the caption on November 11, 2026
 
 handles = [
     Line2D([], [], marker="x", color="none", markeredgecolor=RED, markersize=9, markeredgewidth=2.6, label="Pulp or paper mill closed or idled"),
     Line2D([], [], marker="s", color="none", markerfacecolor=ORG, markeredgecolor="white", markersize=9, label="Pulp or paper mill still operating"),
     Line2D([], [], marker="o", color="none", markerfacecolor=NAV, markeredgecolor="white", markersize=8, label="Sawmill or other wood mill"),
-    Line2D([], [], marker=r"$\rightarrow$", color="none", markerfacecolor=BRN, markeredgecolor=BRN, markersize=13, label="Wood and products trade, 2023"),
+    Line2D([], [], marker=r"$\rightarrow$", color="none", markerfacecolor=BRN, markeredgecolor=BRN, markersize=13, label="Wood and products trade"),
     Line2D([], [], color=GOLD, lw=2.0, label="Private logging road"),
     Line2D([], [], marker="^", color="none", markerfacecolor=GRN, markeredgecolor="white", markersize=9, label="New use for wood"),
     Line2D([], [], marker="s", color="none", markerfacecolor="#96C4A0", markeredgecolor="none", markersize=10, label="Forest"),
 ]
-leg = ax.legend(handles=handles, loc="lower right", bbox_to_anchor=(0.995, 0.012), fontsize=8.4, frameon=True, framealpha=1,
+leg = ax.legend(handles=handles, loc="lower right", bbox_to_anchor=(0.995, 0.012), fontsize=9.2, frameon=True, framealpha=1,
                 edgecolor=INK, fancybox=True, borderpad=0.7, labelspacing=0.55, handletextpad=0.5)
 leg.get_frame().set_linewidth(0.7); leg.set_zorder(12)
 

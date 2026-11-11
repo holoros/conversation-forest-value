@@ -1,0 +1,34 @@
+state,net_musd,outbound_musd,out_cv_pct,low_confidence,any_suppressed
+New York,1265,1295,42.1,TRUE,TRUE
+Indiana,278,278,26.2,FALSE,TRUE
+North Carolina,217,217,45.8,TRUE,TRUE
+Wisconsin,209,231,24.2,FALSE,TRUE
+New Hampshire,204,360,22,FALSE,TRUE
+Massachusetts,178,453,14.2,FALSE,TRUE
+Georgia,133,150,25.3,FALSE,TRUE
+Pennsylvania,130,162,21.7,FALSE,TRUE
+Vermont,119,119,19.1,FALSE,TRUE
+Texas,64,64,39.3,TRUE,TRUE
+Ohio,62,80,27.8,FALSE,TRUE
+Minnesota,-58,0,0,TRUE,TRUE
+New Jersey,47,47,37.5,TRUE,TRUE
+Michigan,45,45,41.3,TRUE,TRUE
+Tennessee,35,35,23.1,FALSE,TRUE
+Maryland,33,33,33,TRUE,TRUE
+South Carolina,31,31,40.9,TRUE,TRUE
+Alabama,-29,0,0,TRUE,TRUE
+Rhode Island,28,28,24.9,FALSE,TRUE
+Illinois,24,24,33.8,TRUE,TRUE
+Kentucky,22,22,30,FALSE,TRUE
+Connecticut,-20,57,18,FALSE,TRUE
+Mississippi,18,18,32.3,TRUE,TRUE
+Iowa,-16,0,0,TRUE,TRUE
+West Virginia,-9,0,0,TRUE,TRUE
+Virginia,-8,0,0,TRUE,TRUE
+Delaware,7,7,38.3,TRUE,TRUE
+North Dakota,-5,0,0,TRUE,TRUE
+Florida,4,4,37.4,TRUE,TRUE
+Louisiana,-3,0,0,TRUE,TRUE
+Kansas,2,2,45.4,TRUE,TRUE
+California,1,1,47.6,TRUE,TRUE
+Oregon,-1,0,0,TRUE,TRUE
