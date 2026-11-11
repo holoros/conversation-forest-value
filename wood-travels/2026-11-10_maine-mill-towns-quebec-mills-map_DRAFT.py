@@ -126,10 +126,18 @@ for (x0, y0, x1, y1, rad, txt, ty) in ((-69.10, 46.80, -69.98, 46.80, 0.12, "Mai
 # Maine and New Brunswick sawmills from public directories (town-level placement, not sized)
 PUR = "#7B4BA3"
 ms = list(csv.DictReader(open(os.path.join(HERE, "2026-11-11_maine-new-brunswick-sawmills_DATA.csv"), encoding="utf-8")))
-ax.scatter([float(r["longitude"]) for r in ms], [float(r["latitude"]) for r in ms], s=52, c=NAV, edgecolors="white", linewidths=0.7, zorder=7)
+# Three size classes from public reports of lumber output (small under 50, medium 50 to 149, large 150 or more million board feet a year),
+# drawn at class midpoints of 25, 100, and 175 million board feet and converted to log volume at about 3.5 cubic meters per thousand
+# board feet (chained from FAO, ITTO and UNECE 2020 factors) so they sit on the same scale as the Quebec permit classes.
+MS = {c: 28 + 240 * math.sqrt(mmbf * 3500 / 1.3e6) for c, mmbf in (("small", 25), ("medium", 100), ("large", 175))}
+known = sorted([r for r in ms if r["size_class"] in MS], key=lambda r: -MS[r["size_class"]])
+unk = [r for r in ms if r["size_class"] not in MS]
+ax.scatter([float(r["longitude"]) for r in known], [float(r["latitude"]) for r in known], s=[MS[r["size_class"]] for r in known], c=NAV,
+           edgecolors="white", linewidths=0.6, zorder=7, alpha=0.92)
+ax.scatter([float(r["longitude"]) for r in unk], [float(r["latitude"]) for r in unk], s=46, c="white", edgecolors=NAV, linewidths=1.8, zorder=7)
 
 closed = [  # town label, lon, lat, label lon, label lat
-    ("Millinocket\nclosed 2008; biofuel\nplant planned", -68.710, 45.657, -69.72, 45.42),
+    ("Millinocket\nclosed 2008; biofuel\nplant planned", -68.710, 45.657, -69.92, 45.37),
     ("East Millinocket\nclosed 2014", -68.574, 45.627, -68.30, 46.22),
     ("Bucksport\nclosed 2014", -68.795, 44.574, -68.47, 43.93),
     ("Lincoln\nclosed 2015", -68.505, 45.362, -66.42, 45.80),
@@ -179,7 +187,7 @@ ax.text(-73.3, 47.25, f"Quebec: {len(q)} wood mills operate within\n30 miles of 
         fontsize=9.8, color=NAV, fontweight="bold", linespacing=1.15, zorder=9,
         bbox=dict(boxstyle="round,pad=0.35,rounding_size=0.18", fc="white", ec="none"))
 
-ax.text(-73.3, 46.99, "Quebec dot size follows permitted wood volume;\nMaine and New Brunswick dots are not sized", ha="left", va="center", linespacing=1.15, fontsize=7.8, color=NAV,
+ax.text(-73.3, 46.99, "Dot size follows wood volume: Quebec by permit class,\nMaine and New Brunswick in three classes from public reports", ha="left", va="center", linespacing=1.15, fontsize=7.8, color=NAV,
         path_effects=halo, zorder=9)
 
 
@@ -193,6 +201,7 @@ handles = [
     Line2D([], [], marker="x", color="none", markeredgecolor=RED, markersize=9, markeredgewidth=2.6, label="Pulp or paper mill closed or idled"),
     Line2D([], [], marker="s", color="none", markerfacecolor=ORG, markeredgecolor="white", markersize=9, label="Pulp or paper mill still operating"),
     Line2D([], [], marker="o", color="none", markerfacecolor=NAV, markeredgecolor="white", markersize=8, label="Sawmill or other wood mill"),
+    Line2D([], [], marker="o", color="none", markerfacecolor="white", markeredgecolor=NAV, markeredgewidth=1.6, markersize=6.5, label="Sawmill, size not found"),
     Line2D([], [], marker=r"$\rightarrow$", color="none", markerfacecolor=BRN, markeredgecolor=BRN, markersize=13, label="Logs out, lumber back"),
     Line2D([], [], color=GOLD, lw=2.0, label="Private logging road"),
     Line2D([], [], marker="^", color="none", markerfacecolor=GRN, markeredgecolor="white", markersize=9, label="New use for wood"),

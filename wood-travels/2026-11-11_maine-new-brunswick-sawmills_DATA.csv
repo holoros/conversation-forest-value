@@ -1,33 +1,33 @@
-mill,town,region,latitude,longitude,source
-Daaquam Lumber Maine,Masardis,Maine,46.50,-68.37,NELMA member mills directory (read 2026-11-11)
-Hammond Lumber,Belgrade,Maine,44.45,-69.83,NELMA member mills directory (read 2026-11-11)
-Hancock Lumber Bethel Mill,Bethel,Maine,44.40,-70.79,NELMA member mills directory (read 2026-11-11)
-Hancock Lumber Casco Mill,Casco,Maine,44.00,-70.52,NELMA member mills directory (read 2026-11-11)
-Hancock Lumber Pittsfield Mill,Pittsfield,Maine,44.78,-69.38,NELMA member mills directory (read 2026-11-11)
-Irving Forest Products Ashland,Nashville Plantation,Maine,46.68,-68.45,NELMA member mills directory (read 2026-11-11)
-Irving Forest Products Dixfield,Dixfield,Maine,44.53,-70.46,NELMA member mills directory (read 2026-11-11)
-Lovell Lumber,Lovell,Maine,44.13,-70.89,NELMA member mills directory (read 2026-11-11)
-R.E. Lowell Lumber,Buckfield,Maine,44.29,-70.37,NELMA member mills directory (read 2026-11-11)
-Maine Wood Timber & Post,Belgrade,Maine,44.50,-69.80,NELMA member mills directory (read 2026-11-11)
-Moose River Lumber,Jackman,Maine,45.63,-70.25,NELMA member mills directory (read 2026-11-11)
-Pleasant River Lumber Dover-Foxcroft,Dover-Foxcroft,Maine,45.19,-69.19,NELMA member mills directory (read 2026-11-11)
-Pleasant River Lumber Enfield,Enfield,Maine,45.25,-68.57,NELMA member mills directory (read 2026-11-11)
-Robbins Lumber East Baldwin,East Baldwin,Maine,43.87,-70.70,NELMA member mills directory (read 2026-11-11)
-Robbins Lumber,Searsmont,Maine,44.36,-69.19,NELMA member mills directory (read 2026-11-11)
-Stratton Lumber,Stratton,Maine,45.14,-70.44,NELMA member mills directory (read 2026-11-11)
-Devon Lumber,Fredericton,New Brunswick,45.96,-66.64,Logging & Sawmilling Journal mill directory map (2023)
-Groupe Lebel,Plaster Rock,New Brunswick,46.91,-67.39,Logging & Sawmilling Journal mill directory map (2023)
-H.J. Crabbe & Sons,Bristol,New Brunswick,46.47,-67.58,Logging & Sawmilling Journal mill directory map (2023)
-Interfor,Bathurst,New Brunswick,47.62,-65.65,Logging & Sawmilling Journal mill directory map (2023)
-Interfor,Belledune,New Brunswick,47.90,-65.85,Logging & Sawmilling Journal mill directory map (2023)
-Interfor,Miramichi,New Brunswick,47.03,-65.50,Logging & Sawmilling Journal mill directory map (2023)
-J.D. Irving,Doaktown,New Brunswick,46.55,-66.12,Logging & Sawmilling Journal mill directory map (2023)
-J.D. Irving Grand Lake Timber,Chipman,New Brunswick,46.18,-65.88,Logging & Sawmilling Journal mill directory map (2023)
-J.D. Irving,Kedgwick,New Brunswick,47.65,-67.34,Logging & Sawmilling Journal mill directory map (2023)
-J.D. Irving,Saint John,New Brunswick,45.31,-66.02,Logging & Sawmilling Journal mill directory map (2023)
-J.D. Irving Saint-Leonard,Saint-Leonard,New Brunswick,47.16,-67.92,Logging & Sawmilling Journal mill directory map (2023); source prints the town as Saint-Quentin and the mill name as Saint-Leonard
-J.D. Irving,Sussex,New Brunswick,45.72,-65.51,Logging & Sawmilling Journal mill directory map (2023)
-J.D. Irving,Clair,New Brunswick,47.25,-68.60,Logging & Sawmilling Journal mill directory map (2023)
-Little's Lumber,Harvey Station,New Brunswick,45.73,-67.01,Logging & Sawmilling Journal mill directory map (2023)
-North American Forest Products,Saint-Quentin,New Brunswick,47.51,-67.39,Logging & Sawmilling Journal mill directory map (2023)
-Ridge Cedar,Keswick Ridge,New Brunswick,46.00,-66.88,Logging & Sawmilling Journal mill directory map (2023)
+mill,town,region,latitude,longitude,source,figure_as_stated,figure_basis,figure_year,size_class,figure_source
+Masardis sawmill (Irving Forest Products since January 2025; formerly Daaquam Lumber Maine),Masardis,Maine,46.50,-68.37,NELMA member mills directory (read 2026-11-11),115 million board feet annually,lumber capacity,2025,medium,https://www.jdirving.com/en/newsroom/New-sawmill-in-Maine/
+Hammond Lumber,Belgrade,Maine,44.45,-69.83,NELMA member mills directory (read 2026-11-11),more than 6.5 million board feet each year,lumber production,undated company page read 2026-11-11,small,https://www.hammondlumber.com/sawmill/
+Hancock Lumber Bethel Mill,Bethel,Maine,44.40,-70.79,NELMA member mills directory (read 2026-11-11),"nearly 100 million board feet a year combined for Bethel, Casco, and Pittsfield; divided evenly for the class",lumber production,2020,small,https://downeast.com/sponsored-content/hancock-lumber
+Hancock Lumber Casco Mill,Casco,Maine,44.00,-70.52,NELMA member mills directory (read 2026-11-11),"nearly 100 million board feet a year combined for Bethel, Casco, and Pittsfield; divided evenly for the class",lumber production,2020,small,https://downeast.com/sponsored-content/hancock-lumber
+Hancock Lumber Pittsfield Mill,Pittsfield,Maine,44.78,-69.38,NELMA member mills directory (read 2026-11-11),"nearly 100 million board feet a year combined for Bethel, Casco, and Pittsfield; divided evenly for the class",lumber production,2020,small,https://downeast.com/sponsored-content/hancock-lumber
+Irving Forest Products Ashland,Nashville Plantation,Maine,46.68,-68.45,NELMA member mills directory (read 2026-11-11),130 million board feet (expansion to 250 million planned),lumber capacity,2026,medium,https://www.woodworkingnetwork.com/news/woodworking-industry-news/irving-forest-products-expand-maine-sawmill-adding-80-jobs
+Irving Forest Products Dixfield,Dixfield,Maine,44.53,-70.46,NELMA member mills directory (read 2026-11-11),100 million board feet,lumber production,2024,medium,https://jdirving.com/en/newsroom/Irving-Forest-Products-celebrates-25-years-in-Dixfield-Maine/
+Lovell Lumber,Lovell,Maine,44.13,-70.89,NELMA member mills directory (read 2026-11-11),not found,,,unknown,
+R.E. Lowell Lumber,Buckfield,Maine,44.29,-70.37,NELMA member mills directory (read 2026-11-11),not found,,,unknown,
+Maine Wood Timber & Post,Belgrade,Maine,44.50,-69.80,NELMA member mills directory (read 2026-11-11),not found,,,unknown,
+Moose River Lumber,Jackman,Maine,45.63,-70.25,NELMA member mills directory (read 2026-11-11),85 MMBF,lumber production,2019,medium,https://composites.umaine.edu/wp-content/uploads/sites/600/2021/08/MMTCC-Attraction-Package-ver-01_07_2020-complete.pdf
+Pleasant River Lumber Dover-Foxcroft,Dover-Foxcroft,Maine,45.19,-69.19,NELMA member mills directory (read 2026-11-11),90 MMBF,lumber production,2019,medium,https://composites.umaine.edu/wp-content/uploads/sites/600/2021/08/MMTCC-Attraction-Package-ver-01_07_2020-complete.pdf
+Pleasant River Lumber Enfield,Enfield,Maine,45.25,-68.57,NELMA member mills directory (read 2026-11-11),about 130 million board feet a year combined with Dover-Foxcroft (2026); class from the remainder after Dover-Foxcroft at 90 (2019),lumber production,2026,small,https://treefrogcreative.ca/?p=361460
+Robbins Lumber East Baldwin,East Baldwin,Maine,43.87,-70.70,NELMA member mills directory (read 2026-11-11),not found,,,unknown,
+Robbins Lumber,Searsmont,Maine,44.36,-69.19,NELMA member mills directory (read 2026-11-11),up to 30 million board feet annually,lumber production,2017,small,https://www.energy.senate.gov/services/files/54CDBC80-B6AA-40A2-9D77-3A4CD47ABD9D
+Stratton Lumber,Stratton,Maine,45.14,-70.44,NELMA member mills directory (read 2026-11-11),60 MMBF,lumber production,2019,medium,https://composites.umaine.edu/wp-content/uploads/sites/600/2021/08/MMTCC-Attraction-Package-ver-01_07_2020-complete.pdf
+Devon Lumber,Fredericton,New Brunswick,45.96,-66.64,Logging & Sawmilling Journal mill directory map (2023),not found,,,unknown,
+Groupe Lebel,Plaster Rock,New Brunswick,46.91,-67.39,Logging & Sawmilling Journal mill directory map (2023),not found,,,unknown,
+H.J. Crabbe & Sons,Bristol,New Brunswick,46.47,-67.58,Logging & Sawmilling Journal mill directory map (2023),30 mmbf,"lumber, production or capacity not specified",2019,small,https://canadianbiomassmagazine.ca/checking-in-on-new-brunswicks-pellet-producers
+Interfor,Bathurst,New Brunswick,47.62,-65.65,Logging & Sawmilling Journal mill directory map (2023),350 MMBF combined for Bathurst and Belledune; divided evenly for the class,lumber capacity,2022,large,https://www.timberprocessing.com/interfor-to-acquire-chaleur-forest-products/page/26
+Interfor,Belledune,New Brunswick,47.90,-65.85,Logging & Sawmilling Journal mill directory map (2023),350 MMBF combined for Bathurst and Belledune; divided evenly for the class,lumber capacity,2022,large,https://www.timberprocessing.com/interfor-to-acquire-chaleur-forest-products/page/26
+Interfor,Miramichi,New Brunswick,47.03,-65.50,Logging & Sawmilling Journal mill directory map (2023),not found,,,unknown,
+J.D. Irving,Doaktown,New Brunswick,46.55,-66.12,Logging & Sawmilling Journal mill directory map (2023),35 mmbf annually,lumber production,2021,small,https://www.woodbusiness.ca/leaping-ahead-j-d-irving-doaktown-sawmill-undergoes-35-million-modernization-expansion-project/
+J.D. Irving Grand Lake Timber,Chipman,New Brunswick,46.18,-65.88,Logging & Sawmilling Journal mill directory map (2023),not found,,,unknown,
+J.D. Irving,Kedgwick,New Brunswick,47.65,-67.34,Logging & Sawmilling Journal mill directory map (2023),not found,,,unknown,
+J.D. Irving,Saint John,New Brunswick,45.31,-66.02,Logging & Sawmilling Journal mill directory map (2023),not found,,,unknown,
+J.D. Irving Saint-Leonard,Saint-Leonard,New Brunswick,47.16,-67.92,Logging & Sawmilling Journal mill directory map (2023); source prints the town as Saint-Quentin and the mill name as Saint-Leonard,not found,,,unknown,
+J.D. Irving,Sussex,New Brunswick,45.72,-65.51,Logging & Sawmilling Journal mill directory map (2023),not found,,,unknown,
+J.D. Irving,Clair,New Brunswick,47.25,-68.60,Logging & Sawmilling Journal mill directory map (2023),not found,,,unknown,
+Little's Lumber,Harvey Station,New Brunswick,45.73,-67.01,Logging & Sawmilling Journal mill directory map (2023),not found,,,unknown,
+North American Forest Products,Saint-Quentin,New Brunswick,47.51,-67.39,Logging & Sawmilling Journal mill directory map (2023),not found,,,unknown,
+Ridge Cedar,Keswick Ridge,New Brunswick,46.00,-66.88,Logging & Sawmilling Journal mill directory map (2023),not found,,,unknown,
