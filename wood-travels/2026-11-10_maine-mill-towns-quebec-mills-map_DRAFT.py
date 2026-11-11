@@ -2,6 +2,7 @@
 # Python rebuild of the R map (the R host was offline on November 10, 2026); carries every element forward
 # and adds Maine's operating pulp mills and a full legend.
 # Inputs, all in this folder unless noted:
+#   2026-11-11_maine-new-brunswick-sawmills_DATA.csv  NELMA member mills (Maine) and Logging & Sawmilling Journal 2023 directory (N.B.)
 #   2026-06-25_quebec-mills-within-50km-of-maine_DATA.csv  Gouvernement du Quebec list of permitted mills (CC BY 4.0)
 #   2020_cec-land-cover-forest-layer_DATA.png              forest classes, CEC 2020 North American land cover, 30 m
 #   us-atlas states-10m.json and world-atlas countries-10m.json (npm packages, Natural Earth and Census outlines)
@@ -101,15 +102,20 @@ for rows, col in ((oth, LBLU), (saw, NAV)):
     ax.scatter([float(r["longitude"]) for r in rows], [float(r["latitude"]) for r in rows], s=[dot_size(r) for r in rows], c=col,
                edgecolors="white", linewidths=0.6, zorder=6, alpha=0.92)
 
+# Maine and New Brunswick sawmills from public directories (town-level placement, not sized)
+PUR = "#7B4BA3"
+ms = list(csv.DictReader(open(os.path.join(HERE, "2026-11-11_maine-new-brunswick-sawmills_DATA.csv"), encoding="utf-8")))
+ax.scatter([float(r["longitude"]) for r in ms], [float(r["latitude"]) for r in ms], s=52, c=PUR, edgecolors="white", linewidths=0.7, zorder=7)
+
 closed = [  # town label, lon, lat, label lon, label lat
     ("Millinocket\nclosed 2008", -68.710, 45.657, -70.21, 46.11),
-    ("East Millinocket\nclosed 2014", -68.574, 45.627, -68.38, 46.37),
+    ("East Millinocket\nclosed 2014", -68.574, 45.627, -68.30, 46.22),
     ("Bucksport\nclosed 2014", -68.795, 44.574, -68.47, 43.93),
     ("Lincoln\nclosed 2015", -68.505, 45.362, -66.42, 45.80),
     ("Old Town\nclosed 2015, reopened,\nclosed again 2023", -68.645, 44.934, -66.72, 44.42),
     ("Madison\nclosed 2016; TimberHP now\nmakes insulation there", -69.880, 44.798, -72.47, 44.83),
     ("Jay\nclosed 2023", -70.216, 44.504, -72.05, 43.78),
-    ("Nackawic, N.B.\npulp mill idled 2026", -67.240, 45.997, -66.33, 46.45),
+    ("Nackawic, N.B.\npulp mill idled 2026", -67.240, 45.997, -66.45, 46.33),
 ]
 newuse = [
     ("Ashland\nWholeTrees makes beams\nfrom whole tree trunks", -68.406, 46.631, -66.93, 47.02),
@@ -140,7 +146,7 @@ for t, x, y, lx, ly in newuse:
 ax.scatter([c[1] for c in closed], [c[2] for c in closed], marker="x", s=150, c=RED, linewidths=3.0, zorder=8)
 ax.scatter([c[1] for c in newuse], [c[2] for c in newuse], marker="^", s=170, c=GRN, edgecolors="white", linewidths=0.6, zorder=8)
 ax.scatter([p[2] for p in pulp], [p[3] for p in pulp], marker="s", s=120, c=ORG, edgecolors="white", linewidths=0.9, zorder=8)
-ax.scatter([p[2] for p in paper], [p[3] for p in paper], marker="s", s=105, c="white", edgecolors=ORG, linewidths=2.2, zorder=8)
+ax.scatter([p[2] for p in paper], [p[3] for p in paper], marker="s", s=120, c=ORG, edgecolors="white", linewidths=0.9, zorder=8)
 halo = [pe.withStroke(linewidth=2.6, foreground="white")]
 for n, note, x, y, dx, dy, ha in pulp + paper:
     ax.text(x + dx, y + dy + 0.045, n, ha=ha, va="center", fontsize=8.4, color=INK, fontweight="bold", path_effects=halo, zorder=9)
@@ -153,8 +159,6 @@ ax.text(-73.3, 47.25, f"Quebec: {len(q)} wood mills operate within\n30 miles of 
 ax.text(-73.3, 47.03, "Dot size follows each mill's permitted wood volume", ha="left", va="center", fontsize=7.8, color=NAV,
         path_effects=halo, zorder=9)
 
-ax.text(-66.35, 47.55, "Other New Brunswick\nmills are not mapped", ha="center", va="center", fontsize=7.8, color=GRY, fontstyle="italic",
-        linespacing=1.1, path_effects=halo, zorder=9)
 
 # ownership box
 ax.add_patch(FancyBboxPatch((-70.10, 42.99), 2.16, 0.53, boxstyle="round,pad=0,rounding_size=0.05", fc="white", ec=INK, lw=0.7, zorder=10))
@@ -164,10 +168,10 @@ ax.text(-70.00, 43.355, "Maine: 92% private\nQuebec: 92% public overall\nNew Bru
 
 handles = [
     Line2D([], [], marker="x", color="none", markeredgecolor=RED, markersize=9, markeredgewidth=2.6, label="Pulp or paper mill closed or idled"),
-    Line2D([], [], marker="s", color="none", markerfacecolor=ORG, markeredgecolor="white", markersize=9, label="Pulp mill still operating"),
-    Line2D([], [], marker="s", color="none", markerfacecolor="white", markeredgecolor=ORG, markeredgewidth=1.8, markersize=8, label="Paper mill still operating"),
+    Line2D([], [], marker="s", color="none", markerfacecolor=ORG, markeredgecolor="white", markersize=9, label="Pulp or paper mill still operating"),
     Line2D([], [], marker="o", color="none", markerfacecolor=NAV, markeredgecolor="white", markersize=8, label="Quebec sawmill"),
     Line2D([], [], marker="o", color="none", markerfacecolor=LBLU, markeredgecolor="white", markersize=8, label="Other Quebec wood mill"),
+    Line2D([], [], marker="o", color="none", markerfacecolor=PUR, markeredgecolor="white", markersize=7, label="Maine or New Brunswick sawmill"),
     Line2D([], [], marker="^", color="none", markerfacecolor=GRN, markeredgecolor="white", markersize=9, label="New use for wood"),
     Line2D([], [], marker="s", color="none", markerfacecolor="#96C4A0", markeredgecolor="none", markersize=10, label="Forest"),
 ]

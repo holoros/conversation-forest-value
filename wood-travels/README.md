@@ -29,3 +29,9 @@ Note (November 10, 2026, night): the mill map is now built by `2026-11-10_maine-
 Note (November 10, 2026, late): the mill map adds Sappi's Westbrook mill as a paper mill still operating (hollow orange square). Sappi shut Westbrook's Paper Machine No. 9 and parts of its energy complex in 2020 and kept making release papers there (Sappi news release, July 9, 2020). Forest is now a legend entry. Twin Rivers' Madawaska paper mill and its Edmundston, New Brunswick, pulp mill are not on the map because their current status was not verified.
 
 Note (November 10, 2026, final pass): the mill map now shows all five Maine mills that reporting counts as still operating: pulp mills in Rumford, Skowhegan and Baileyville, and paper mills in Westbrook and Madawaska. Madawaska's status is from the Bangor Daily News (April 14, 2026); Westbrook's from a Sappi company profile (170 employees); Baileyville's $150 million tissue expansion from the Bangor Daily News (August 31, 2016). The Edmundston, New Brunswick, pulp mill is not mapped.
+
+## 2026-11-11 mill map: Maine and New Brunswick sawmills, pulp and paper merged
+
+- Added 32 sawmills as unsized purple dots from `2026-11-11_maine-new-brunswick-sawmills_DATA.csv`: 16 Maine softwood mills from the NELMA member mills directory (read November 11, 2026) and the 16 New Brunswick sawmills inside the map frame from the Logging & Sawmilling Journal 2023 mill directory map (3 more fall outside the frame). Placement is at town level. Hardwood and non-member Maine mills are not included.
+- Pulp and paper mills still operating now share one solid orange square.
+- Removed the "Other New Brunswick mills are not mapped" note.
