@@ -31,7 +31,7 @@ a <- ggplot() +
   lab(-90.5, 29.2, "Macon, Ga.\nSaint John pulp\nbecomes tissue") +
   lab(-64.5, 48.6, "Saint John, N.B.\nPulp mill", 0) +
   annotate("segment", x = -54, y = 38.1, xend = -68.6, yend = 44.6, colour = gry, linewidth = 0.4) +
-  lab(-48, 33.5, "Maine logs cross the border to Quebec\nsawmills. In 2023, about 2 million tons of\nMaine's harvest left the state unprocessed,\nwhile 2.7 million tons came in from\nneighboring states and provinces") +
+  lab(-52, 33.5, "Maine logs cross the border to Quebec\nsawmills. In 2023, about 2 million tons of\nMaine's harvest left the state unprocessed,\nwhile 2.7 million tons came in from\nneighboring states and provinces") +
   lab(-47, -30, "Brazil supplies about 82% of\nthe hardwood pulp the U.S. buys,\nmostly from eucalyptus plantations") +
   annotate("label", x = -70.6, y = 49.6, label = "MAINE", colour = grn, fill = "white", fontface = "bold", size = 3.8, hjust = 0.5, linewidth = 0) +
   annotation_raster(legbar, xmin = -95, xmax = -93, ymin = -22, ymax = -4) +
