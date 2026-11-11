@@ -118,9 +118,11 @@ ax.text(-68.22, 45.11, "Stud Mill Road", ha="center", va="center", fontsize=7.8,
 
 # Logs cross to Quebec sawmills and lumber comes back to U.S. buyers (schematic)
 from matplotlib.patches import FancyArrowPatch
-for (x0, y0, x1, y1, rad, txt, ty) in ((-69.10, 46.80, -69.98, 46.80, 0.12, "Maine logs", 46.90), (-70.12, 46.38, -69.25, 46.38, 0.12, "lumber to U.S. buyers", 46.27)):
-    ax.add_patch(FancyArrowPatch((x0, y0), (x1, y1), connectionstyle=f"arc3,rad={rad}", arrowstyle="-|>", mutation_scale=16, lw=4.2, color="white", zorder=6.4))
-    ax.add_patch(FancyArrowPatch((x0, y0), (x1, y1), connectionstyle=f"arc3,rad={rad}", arrowstyle="-|>", mutation_scale=14, lw=2.2, color=BRN, zorder=6.5))
+# Arrow width follows the 2023 totals: about 2.0 million green tons left Maine unprocessed and 2.7 million came in (all neighbors)
+for (x0, y0, x1, y1, rad, txt, ty, mt) in ((-69.10, 46.80, -69.98, 46.80, 0.12, "2.0 million tons out", 46.91, 2.0), (-70.12, 46.38, -69.25, 46.38, 0.12, "2.7 million tons in", 46.25, 2.7)):
+    lw = 1.5 * mt
+    ax.add_patch(FancyArrowPatch((x0, y0), (x1, y1), connectionstyle=f"arc3,rad={rad}", arrowstyle="-|>", mutation_scale=7 + 5 * mt, lw=lw + 2.0, color="white", zorder=6.4))
+    ax.add_patch(FancyArrowPatch((x0, y0), (x1, y1), connectionstyle=f"arc3,rad={rad}", arrowstyle="-|>", mutation_scale=5 + 5 * mt, lw=lw, color=BRN, zorder=6.5))
     ax.text((x0 + x1) / 2, ty, txt, ha="center", va="center", fontsize=7.8, color=BRN, fontweight="bold", path_effects=halo, zorder=9)
 
 # Maine and New Brunswick sawmills from public directories (town-level placement, not sized)
@@ -134,7 +136,6 @@ known = sorted([r for r in ms if r["size_class"] in MS], key=lambda r: -MS[r["si
 unk = [r for r in ms if r["size_class"] not in MS]
 ax.scatter([float(r["longitude"]) for r in known], [float(r["latitude"]) for r in known], s=[MS[r["size_class"]] for r in known], c=NAV,
            edgecolors="white", linewidths=0.6, zorder=7, alpha=0.92)
-ax.scatter([float(r["longitude"]) for r in unk], [float(r["latitude"]) for r in unk], s=46, c="white", edgecolors=NAV, linewidths=1.8, zorder=7)
 
 closed = [  # town label, lon, lat, label lon, label lat
     ("Millinocket\nclosed 2008; biofuel\nplant planned", -68.710, 45.657, -69.92, 45.37),
@@ -187,7 +188,7 @@ ax.text(-73.3, 47.25, f"Quebec: {len(q)} wood mills operate within\n30 miles of 
         fontsize=9.8, color=NAV, fontweight="bold", linespacing=1.15, zorder=9,
         bbox=dict(boxstyle="round,pad=0.35,rounding_size=0.18", fc="white", ec="none"))
 
-ax.text(-73.3, 46.99, "Dot size follows wood volume: Quebec by permit class,\nMaine and New Brunswick in three classes from public reports", ha="left", va="center", linespacing=1.15, fontsize=7.8, color=NAV,
+ax.text(-73.3, 46.99, "Dot size follows wood volume: Quebec by permit class,\nMaine and New Brunswick approximate, in three classes", ha="left", va="center", linespacing=1.15, fontsize=7.8, color=NAV,
         path_effects=halo, zorder=9)
 
 
@@ -201,8 +202,7 @@ handles = [
     Line2D([], [], marker="x", color="none", markeredgecolor=RED, markersize=9, markeredgewidth=2.6, label="Pulp or paper mill closed or idled"),
     Line2D([], [], marker="s", color="none", markerfacecolor=ORG, markeredgecolor="white", markersize=9, label="Pulp or paper mill still operating"),
     Line2D([], [], marker="o", color="none", markerfacecolor=NAV, markeredgecolor="white", markersize=8, label="Sawmill or other wood mill"),
-    Line2D([], [], marker="o", color="none", markerfacecolor="white", markeredgecolor=NAV, markeredgewidth=1.6, markersize=6.5, label="Sawmill, size not found"),
-    Line2D([], [], marker=r"$\rightarrow$", color="none", markerfacecolor=BRN, markeredgecolor=BRN, markersize=13, label="Logs out, lumber back"),
+    Line2D([], [], marker=r"$\rightarrow$", color="none", markerfacecolor=BRN, markeredgecolor=BRN, markersize=13, label="Raw wood out of and into Maine"),
     Line2D([], [], color=GOLD, lw=2.0, label="Private logging road"),
     Line2D([], [], marker="^", color="none", markerfacecolor=GRN, markeredgecolor="white", markersize=9, label="New use for wood"),
     Line2D([], [], marker="s", color="none", markerfacecolor="#96C4A0", markeredgecolor="none", markersize=10, label="Forest"),
