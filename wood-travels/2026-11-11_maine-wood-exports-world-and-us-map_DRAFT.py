@@ -109,7 +109,7 @@ fig = plt.figure(figsize=(10, 8.6), dpi=300)
 fig.patch.set_facecolor("white")
 fig.text(0.04, 0.955, "Maine's wood mostly stays in the U.S., and most exports go to Canada", fontfamily="Liberation Serif",
          fontweight="bold", fontsize=19.5, color=GRN, ha="left", va="center")
-fig.text(0.04, 0.917, f"Other states took at least {usd(net_pos)} more of Maine's wood, pulp, and paper than they sent back in 2022. "
+fig.text(0.04, 0.917, f"Other states took about {usd(net_pos)} more of Maine's wood, pulp, and paper than they sent back in 2022. "
          f"Exports abroad were {usd(total_exp)} in 2024,\nand Canada took 67% of them. Circle area is the dollar value on one scale for both maps.",
          fontsize=10.2, color=INK, ha="left", va="center", linespacing=1.3)
 
