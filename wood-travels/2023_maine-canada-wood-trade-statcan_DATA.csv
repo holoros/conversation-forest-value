@@ -1,0 +1,15 @@
+direction,product,quantity,unit,value_cad_million,value_without_quantity_cad_million,hs_codes
+Maine to Canada,logs,1590509,cubic meters,174.2,1.1,4403
+Maine to Canada,chips and fuelwood,429616,metric tons,35.3,0,4401
+Maine to Canada,lumber,69594,cubic meters,30.7,0,4407
+Maine to Canada,panels,4862,cubic meters,2.0,0,4410-4412
+Maine to Canada,wood pulp,44711,metric tons (air dry),40.7,0,4701-4706
+Maine to Canada,recovered paper,33226,metric tons,11.1,0,4707
+Maine to Canada,paper and paperboard,114302,metric tons,222.0,0.3,48
+Canada to Maine,logs,27166,cubic meters,4.5,0.2,4403
+Canada to Maine,chips and fuelwood,96270,metric tons,27.4,0,4401
+Canada to Maine,lumber,780285,cubic meters,190.4,0,4407
+Canada to Maine,panels,67577,cubic meters,30.6,0,4410-4412
+Canada to Maine,wood pulp,375409,metric tons (air dry),315.5,0,4701-4706
+Canada to Maine,recovered paper,1389,metric tons,1.6,0,4707
+Canada to Maine,paper and paperboard,64548,metric tons,145.6,46.7,48

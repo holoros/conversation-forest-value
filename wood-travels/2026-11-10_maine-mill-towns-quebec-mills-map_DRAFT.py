@@ -118,12 +118,18 @@ ax.text(-68.22, 45.11, "Stud Mill Road", ha="center", va="center", fontsize=7.8,
 
 # Logs cross to Quebec sawmills and lumber comes back to U.S. buyers (schematic)
 from matplotlib.patches import FancyArrowPatch
-# Arrow width follows the 2023 totals: about 2.0 million green tons left Maine unprocessed and 2.7 million came in (all neighbors)
-for (x0, y0, x1, y1, rad, txt, ty, mt) in ((-69.10, 46.80, -69.98, 46.80, 0.12, "2.0 million tons out", 46.91, 2.0), (-70.12, 46.38, -69.25, 46.38, 0.12, "2.7 million tons in", 46.25, 2.7)):
-    lw = 1.5 * mt
-    ax.add_patch(FancyArrowPatch((x0, y0), (x1, y1), connectionstyle=f"arc3,rad={rad}", arrowstyle="-|>", mutation_scale=7 + 5 * mt, lw=lw + 2.0, color="white", zorder=6.4))
-    ax.add_patch(FancyArrowPatch((x0, y0), (x1, y1), connectionstyle=f"arc3,rad={rad}", arrowstyle="-|>", mutation_scale=5 + 5 * mt, lw=lw, color=BRN, zorder=6.5))
-    ax.text((x0 + x1) / 2, ty, txt, ha="center", va="center", fontsize=7.8, color=BRN, fontweight="bold", path_effects=halo, zorder=9)
+# Arrow width follows 2023 Maine and Canada trade by approximate weight (Statistics Canada, 2023_maine-canada-wood-trade-statcan_DATA.csv):
+# Maine to Canada, 1.59 million m3 of logs plus 0.43 million t of chips and fuelwood, about 2.0 million t at roughly 1 t per m3 of green logs;
+# Canada to Maine, 0.78 million m3 of lumber (roughly 0.5 t per m3) plus 0.38 million t of pulp and 0.06 million t of paper, about 0.8 million t.
+for (x0, y0, x1, y1, rad, txt, ty, mt) in ((-69.05, 46.86, -69.98, 46.86, 0.12, "Logs and chips to Canada\nabout 2.0 million tons", 47.03, 2.0),
+                                          (-70.10, 46.50, -69.20, 46.50, 0.12, "Lumber, pulp, paper to Maine\nabout 0.8 million tons", 46.34, 0.8)):
+    lw = 1.2 + 2.0 * mt
+    ax.add_patch(FancyArrowPatch((x0, y0), (x1, y1), connectionstyle=f"arc3,rad={rad}", arrowstyle="-|>", mutation_scale=9 + 5 * mt, lw=lw + 2.0, color="white", zorder=6.4))
+    ax.add_patch(FancyArrowPatch((x0, y0), (x1, y1), connectionstyle=f"arc3,rad={rad}", arrowstyle="-|>", mutation_scale=7 + 5 * mt, lw=lw, color=BRN, zorder=6.5))
+    ax.text((x0 + x1) / 2, ty, txt, ha="center", va="center", fontsize=7.6, color=BRN, fontweight="bold", linespacing=1.1, path_effects=halo, zorder=9)
+# Canada's public investment note
+ax.text(-73.3, 46.52, "Canada added about C$530 million for its forest\nsector in June 2026, on top of more than\nC$2 billion since August 2025", ha="left", va="center",
+        fontsize=8.2, color=INK, linespacing=1.2, zorder=9, bbox=dict(boxstyle="round,pad=0.35", fc="white", ec=INK, lw=0.6))
 
 # Maine and New Brunswick sawmills from public directories (town-level placement, not sized)
 PUR = "#7B4BA3"
@@ -202,7 +208,7 @@ handles = [
     Line2D([], [], marker="x", color="none", markeredgecolor=RED, markersize=9, markeredgewidth=2.6, label="Pulp or paper mill closed or idled"),
     Line2D([], [], marker="s", color="none", markerfacecolor=ORG, markeredgecolor="white", markersize=9, label="Pulp or paper mill still operating"),
     Line2D([], [], marker="o", color="none", markerfacecolor=NAV, markeredgecolor="white", markersize=8, label="Sawmill or other wood mill"),
-    Line2D([], [], marker=r"$\rightarrow$", color="none", markerfacecolor=BRN, markeredgecolor=BRN, markersize=13, label="Raw wood out of and into Maine"),
+    Line2D([], [], marker=r"$\rightarrow$", color="none", markerfacecolor=BRN, markeredgecolor=BRN, markersize=13, label="Maine and Canada trade, 2023"),
     Line2D([], [], color=GOLD, lw=2.0, label="Private logging road"),
     Line2D([], [], marker="^", color="none", markerfacecolor=GRN, markeredgecolor="white", markersize=9, label="New use for wood"),
     Line2D([], [], marker="s", color="none", markerfacecolor="#96C4A0", markeredgecolor="none", markersize=10, label="Forest"),
