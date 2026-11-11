@@ -113,7 +113,7 @@ for nm, pts in rd.items():
     pts.sort()
     ax.plot([p[2] for p in pts], [p[3] for p in pts], color="white", lw=3.6, zorder=5, solid_capstyle="round")
     ax.plot([p[2] for p in pts], [p[3] for p in pts], color=GOLD, lw=2.0, zorder=5.1, solid_capstyle="round")
-ax.text(-69.62, 46.06, "Golden Road", ha="center", va="center", fontsize=7.8, color="#7A5A00", fontstyle="italic", fontweight="bold", rotation=-6, path_effects=halo, zorder=9)
+ax.text(-69.72, 45.80, "Golden Road", ha="center", va="center", fontsize=7.8, color="#7A5A00", fontstyle="italic", fontweight="bold", rotation=-6, path_effects=halo, zorder=9)
 ax.text(-68.22, 45.11, "Stud Mill Road", ha="center", va="center", fontsize=7.8, color="#7A5A00", fontstyle="italic", fontweight="bold", path_effects=halo, zorder=9)
 
 # Logs cross to Quebec sawmills and lumber comes back to U.S. buyers (schematic)
@@ -124,12 +124,12 @@ from matplotlib.patches import FancyArrowPatch
 # Earlier note: arrow width followed the Maine Forest Service 2023 Wood Processor Report: 2.0 million green tons of Maine wood left the state
 # unprocessed and 2.7 million green tons came in from other states and provinces. Statistics Canada adds about 0.8 million tons
 # of lumber, pulp, and paper sent from Canada to Maine (2023_maine-canada-wood-trade-statcan_DATA.csv), named in the label only.
-for (x0, y0, x1, y1, rad, txt, ty, mt) in ((-69.05, 46.86, -69.98, 46.86, 0.12, "Out of Maine\n2.0 million tons raw wood\n0.2 million tons products", 47.09, 2.2),
-                                          (-70.10, 46.50, -69.20, 46.50, 0.12, "Into Maine\n2.7 million tons raw wood\n0.8 million tons products", 46.25, 3.5)):
+for (x0, y0, x1, y1, rad, txt, tx, ty, mt) in ((-69.05, 46.86, -69.98, 46.86, 0.12, "Out of Maine\n2.0 million tons raw wood\n0.2 million tons products", -69.28, 47.07, 2.2),
+                                              (-70.10, 46.50, -69.20, 46.50, 0.12, "Into Maine\n2.7 million tons raw wood\n0.8 million tons products", -70.00, 46.23, 3.5)):
     lw = 1.5 * mt
     ax.add_patch(FancyArrowPatch((x0, y0), (x1, y1), connectionstyle=f"arc3,rad={rad}", arrowstyle="-|>", mutation_scale=8 + 4 * mt, lw=lw + 2.0, color="white", zorder=6.4))
     ax.add_patch(FancyArrowPatch((x0, y0), (x1, y1), connectionstyle=f"arc3,rad={rad}", arrowstyle="-|>", mutation_scale=6 + 4 * mt, lw=lw, color=BRN, zorder=6.5))
-    ax.text((x0 + x1) / 2, ty, txt, ha="center", va="center", fontsize=7.6, color=BRN, fontweight="bold", linespacing=1.1, path_effects=halo, zorder=9)
+    ax.text(tx, ty, txt, ha="left", va="center", fontsize=7.6, color=BRN, fontweight="bold", linespacing=1.1, path_effects=halo, zorder=9)
 # Canada's public investment note
 ax.text(-73.3, 46.47, "Canada has committed more than\nC$2 billion to its forest sector since\nAugust 2025 and added C$400 million\nmore in June 2026", ha="left", va="center",
         fontsize=8.2, color=INK, linespacing=1.2, zorder=9, bbox=dict(boxstyle="round,pad=0.35", fc="white", ec=INK, lw=0.6))
@@ -148,7 +148,7 @@ ax.scatter([float(r["longitude"]) for r in known], [float(r["latitude"]) for r i
 
 closed = [  # town label, lon, lat, label lon, label lat
     ("Millinocket\nclosed 2008; biofuel\nplant planned", -68.710, 45.657, -69.92, 45.37),
-    ("East Millinocket\nclosed 2014", -68.574, 45.627, -68.30, 46.22),
+    ("East Millinocket\nclosed 2014", -68.574, 45.627, -68.03, 46.19),
     ("Bucksport\nclosed 2014", -68.795, 44.574, -68.47, 43.93),
     ("Lincoln\nclosed 2015", -68.505, 45.362, -66.42, 45.80),
     ("Old Town\nclosed 2015, reopened,\nclosed again 2023", -68.645, 44.934, -66.72, 44.42),
