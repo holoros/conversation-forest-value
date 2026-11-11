@@ -134,8 +134,7 @@ lab = {"Canada": (-16, 12, "right"), "China": (9, -9, "left"), "Belgium": (-7, 9
 for c, v, x, y in sorted(pts, key=lambda p: -p[1]):
     if v < 1:                                  # simplified: countries under $1M are not drawn
         continue
-    if c in lab:
-        ax.plot([mx[0], x], [my[0], y], color=ORG, lw=0.5 + 2.2 * math.sqrt(v / 385.3), alpha=0.35, zorder=2, solid_capstyle="round")
+    ax.plot([mx[0], x], [my[0], y], color=ORG, lw=0.5 + 2.2 * math.sqrt(v / 385.3), alpha=0.35, zorder=2, solid_capstyle="round")
     ax.scatter([x], [y], s=(2 * rad(v)) ** 2, c=ORG, edgecolors="white", linewidths=0.6, zorder=3, alpha=0.93)
     if c in lab:
         dx, dy, ha = lab[c]
