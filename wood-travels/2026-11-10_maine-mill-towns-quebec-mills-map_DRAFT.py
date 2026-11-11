@@ -118,11 +118,12 @@ newuse = [
 pulp = [  # operating pulp mills: name, note, lon, lat, text dx, dy, ha
     ("Rumford", "$330M+ invested since 2019", -70.551, 44.553, -0.11, 0.0, "right"),
     ("Skowhegan", "$600M invested since 2018", -69.640, 44.700, 0.11, 0.10, "left"),
-    ("Baileyville", "paused wood buying in 2025", -67.403, 45.156, 0.11, 0.0, "left"),
+    ("Baileyville", "$150M tissue mill added in 2016", -67.403, 45.156, 0.11, 0.0, "left"),
     ("Saint John, N.B.", "$1.1B upgrade announced 2024", -66.060, 45.270, -0.33, 0.15, "center"),
 ]
 paper = [  # paper mill still operating without a pulp mill
     ("Westbrook", "paper machine shut in 2020", -70.371, 43.677, 0.11, 0.03, "left"),
+    ("Madawaska", "the town's biggest employer", -68.322, 47.355, 0.11, 0.0, "left"),
 ]
 box = dict(boxstyle="round,pad=0.32,rounding_size=0.18", fc="white", ec=INK, lw=0.7)
 
@@ -177,7 +178,7 @@ leg.get_frame().set_linewidth(0.7); leg.set_zorder(12)
 fig.text(0.126, 0.955, "When a pulp mill closes, sawmills feel it too", fontfamily="Liberation Serif", fontweight="bold", fontsize=21,
          color=GRN, ha="left", va="center")
 fig.text(0.126, 0.899, "Sawmills sell their chips and sawdust to pulp mills, so each closure reaches well beyond the mill town.\n"
-         "Maine has lost seven paper mills since 2008, and the survivors have needed costly upgrades.",
+         "Seven Maine paper mills have closed since 2008, and one in New Brunswick was idled in 2026.",
          fontsize=10.6, color=INK, ha="left", va="center", linespacing=1.3)
 fig.savefig(OUT, dpi=300, facecolor="white")
 print(len(q), len(saw), "saved", OUT)
