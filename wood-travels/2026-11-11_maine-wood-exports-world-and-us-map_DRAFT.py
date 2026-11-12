@@ -135,7 +135,7 @@ for c, v, x, y in sorted(pts, key=lambda p: -p[1]):
     if v < 1:                                  # simplified: countries under $1M are not drawn
         continue
     ax.plot([mx[0], x], [my[0], y], color=ORG, lw=0.5 + 2.2 * math.sqrt(v / 385.3), alpha=0.35, zorder=2, solid_capstyle="round")
-    ax.scatter([x], [y], s=(2 * rad(v)) ** 2, c=ORG, edgecolors="white", linewidths=0.6, zorder=3, alpha=0.93)
+    ax.scatter([x], [y], s=(2 * rad(v)) ** 2, c=ORG, edgecolors=ORG, linewidths=0.8, zorder=3, alpha=0.55)
     if c in lab:
         dx, dy, ha = lab[c]
         ax.annotate(f"{c} {usd(v)}", (x, y), xytext=(dx, dy), textcoords="offset points", ha=ha, va="center", fontsize=8.8, fontweight="bold", color=INK, path_effects=halo, zorder=5)
@@ -159,7 +159,7 @@ for r in sorted(cfs, key=lambda r: -abs(float(r["net_musd"]))):
     lon, lat = centroid(states[r["state"]])
     x, y = albers(np.array([lon]), np.array([lat]))
     col = ORG if net > 0 else NAV
-    bx.scatter(x, y, s=(2 * rad(abs(net))) ** 2, facecolors=col, edgecolors="white", linewidths=0.6, zorder=3, alpha=0.93)
+    bx.scatter(x, y, s=(2 * rad(abs(net))) ** 2, facecolors=col, edgecolors=col, linewidths=0.8, zorder=3, alpha=0.55)
     if r["state"] in slab:
         dx, dy, ha = slab[r["state"]]
         txt = f"{r['state']} {usd(net)}" if net > 0 else f"{r['state']} sends Maine {usd(-net)} more"
@@ -171,7 +171,7 @@ kx = fig.add_axes([0.60, 0.035, 0.38, 0.315]); kx.set_axis_off(); kx.set_xlim(0,
 kx.text(0.0, 0.93, "HOW TO READ IT", fontsize=9.6, fontweight="bold", color=INK, va="center")
 xs = [0.10, 0.34, 0.70]
 for xk, v in zip(xs, (50, 385, 1265)):
-    kx.scatter([xk], [0.70], s=(2 * rad(v)) ** 2, c=ORG, edgecolors="white", linewidths=0.6, clip_on=False)
+    kx.scatter([xk], [0.70], s=(2 * rad(v)) ** 2, c=ORG, edgecolors=ORG, linewidths=0.8, alpha=0.55, clip_on=False)
     kx.text(xk, 0.47, usd(v), ha="center", va="center", fontsize=9.2, fontweight="bold", color=INK)
 notes = [(ORG, True, "takes more from Maine than it sends"), (NAV, True, "sends Maine more than it takes")]
 for i, (col, filled, t) in enumerate(notes):
