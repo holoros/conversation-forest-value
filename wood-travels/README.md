@@ -62,3 +62,12 @@ Note (November 12, 2026):
 - `2026-11-12_how-maines-trees-are-used_DRAFT.py` and `.png` rebuild the harvest chart from `2009-2023_maine-wood-flow-by-product-mfs_DATA.csv` (Maine Forest Service Wood Processor Reports, source URL per row). The right panel now shows tons harvested by product, 2009 to 2023, in place of shares, so the fall from 13.5 to 10.0 million green tons is visible (Adam Daigneault's request). The left panel and headline are unchanged in content. This supersedes the patched `2023_how-maines-trees-are-used-nofooter_DATA.png`.
 - Second pass on November 12, 2026: all figures now share a bold sans headline in near black and a gray deck on white, to sit with The Conversation's own charts. The leakage map is redrawn in the Equal Earth projection (Aaron found the earlier one distorted) and carries pulp trade arrows scaled by tonnage: Brazil to the U.S. 2.29 million metric tons and Canada to the U.S. 1.84 million of bleached kraft pulp in 2024 (HS 470321 and 470329), against U.S. kraft pulp exports (HS 4703) of 0.08 million to Brazil and 0.50 million to Canada (UN Comtrade, U.S.-reported).
 - `2026-11-12_us-lumber-and-pulp-net-trade_DRAFT.py` and `.png`: new chart of U.S. exports minus imports for lumber (HS 4407), all kraft pulp (HS 4703), and hardwood kraft pulp (HS 470329) in 2004, 2010, 2014, 2019, and 2024, from `2004-2024_us-lumber-and-pulp-trade-comtrade_DATA.csv` (UN Comtrade public preview, one call per year; 2009 could not be read, so 2010 is used). Nominal dollars. The U.S. is a net buyer of lumber (\$5.1B in 2024) and hardwood pulp (\$1.1B) and a net seller of kraft pulp overall (\$1.4B).
+
+## November 12, 2026: trade inset on the leakage map
+
+The leakage map now carries an inset, "Raw wood out, finished goods back", with U.S. exports minus imports in 2024 for
+logs (HS 4403, +$1.5B), kraft wood pulp (4703, +$1.4B), tissue and paper towels (4818, −$1.2B), plywood (4412, −$2.9B),
+lumber (4407, −$5.1B), and wooden furniture (940330 to 940360, −$14.0B). Values are UN Comtrade world totals reported
+by the United States, in nominal dollars, stored in `2024_us-raw-and-finished-wood-trade-comtrade_DATA.csv`. The
+standalone net trade chart (`2026-11-12_us-lumber-and-pulp-net-trade_DRAFT`) stays in the repository but is not placed
+in the article draft.

@@ -7,6 +7,8 @@
 # Pulp arrows: UN Comtrade, U.S.-reported trade, 2024. Imports are bleached kraft pulp (HS 470321 softwood and
 # 470329 hardwood): Brazil 0.266 + 2.024 = 2.29 million metric tons, Canada 1.729 + 0.110 = 1.84 million.
 # Exports are all kraft pulp (HS 4703): 0.08 million to Brazil, 0.50 million to Canada.
+# Inset: U.S. exports minus imports by product, 2024, UN Comtrade world totals (logs HS 4403, kraft pulp 4703,
+# tissue and towels 4818, plywood 4412, lumber 4407, wooden furniture 940330 to 940360). Added November 12, 2026.
 # Routes are schematic. Usage: python3 <script> <node_modules dir> <grid.csv> <out.png>
 import csv, json, sys, os, math, collections
 import numpy as np
@@ -161,6 +163,30 @@ ax.text(bx0 + 0.09, ky, "Pulp trade; width shows tons", ha="left", va="center", 
 ky2 = P(-119.0, -30.5)[1]
 ax.plot([bx0, bx0 + 0.07], [ky2, ky2], color=NAV, linewidth=1.5, linestyle=(0, (4, 2.5)), zorder=8)
 ax.text(bx0 + 0.09, ky2, "One company's route", ha="left", va="center", fontsize=9.8, color=INK, zorder=8)
+
+# ---- inset: U.S. trade balance by product, 2024 (UN Comtrade; see 2024_us-raw-and-finished-wood-trade-comtrade_DATA.csv) ----
+tr = [(r["product"], (float(r["exports_usd"]) - float(r["imports_usd"])) / 1e9)
+      for r in csv.DictReader(open(os.path.join(HERE, "2024_us-raw-and-finished-wood-trade-comtrade_DATA.csv")))]
+ORG = "#B4451F"
+ia = ax.inset_axes([0.012, 0.447, 0.365, 0.213], zorder=9)
+ia.set_facecolor("white"); ia.set_xticks([]); ia.set_yticks([])
+for sp in ia.spines.values():
+    sp.set_edgecolor(INK); sp.set_linewidth(0.6)
+ia.set_xlim(0, 1); ia.set_ylim(0, 1)
+ia.text(0.03, 0.925, "Raw wood out, finished goods back", fontsize=11.6, fontweight="bold", color=INK, va="center")
+ia.text(0.03, 0.835, "U.S. exports minus imports in 2024", fontsize=9.4, color="#444444", va="center")
+X0, XW, vmax = 0.47, 0.50, max(abs(v) for _, v in tr)
+for i, (name, v) in enumerate(tr):
+    y = 0.715 - i * 0.106
+    w = XW * abs(v) / vmax
+    ia.add_patch(plt.Rectangle((X0, y - 0.038), w, 0.076, facecolor=GRN if v > 0 else ORG, edgecolor="none"))
+    ia.text(X0 - 0.02, y, name, ha="right", va="center", fontsize=9.4, fontweight="bold", color=INK)
+    t = ("+$" if v > 0 else "\u2212$") + f"{abs(v):.1f}B"
+    if w > 0.3:
+        ia.text(X0 + w - 0.015, y, t, ha="right", va="center", fontsize=9.4, fontweight="bold", color="white")
+    else:
+        ia.text(X0 + w + 0.012, y, t, ha="left", va="center", fontsize=9.4, fontweight="bold", color=GRN if v > 0 else ORG)
+ia.text(0.03, 0.055, "Green: sells more than it buys. Orange: buys more.", fontsize=9, color="#444444", va="center")
 
 fig.text(0.03, 1 - 0.42 / H, "The wood behind a paper towel now travels farther", fontsize=23, fontweight="bold", color=INK, va="center")
 fig.text(0.03, 1 - 0.98 / H, "When a mill closes, Americans keep buying paper and the fiber comes from farther away. Shading shows how much\nof the carbon gained by delaying harvests in a region is lost as cutting shifts somewhere else.",
