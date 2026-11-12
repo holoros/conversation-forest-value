@@ -71,3 +71,5 @@ lumber (4407, −$5.1B), and wooden furniture (940330 to 940360, −$14.0B). Val
 by the United States, in nominal dollars, stored in `2024_us-raw-and-finished-wood-trade-comtrade_DATA.csv`. The
 standalone net trade chart (`2026-11-12_us-lumber-and-pulp-net-trade_DRAFT`) stays in the repository but is not placed
 in the article draft.
+
+- November 12, 2026 (later): pulp labels on the leakage map converted from metric tons to short tons at Aaron's direction (2.29 Mt = 2.5M tons from Brazil, 1.84 Mt = 2.0M tons from Canada; 0.08 and 0.50 Mt the other way = 0.1M and 0.6M tons). Arrow widths are unchanged.

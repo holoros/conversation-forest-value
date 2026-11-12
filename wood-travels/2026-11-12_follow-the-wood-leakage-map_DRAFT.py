@@ -9,6 +9,7 @@
 # Exports are all kraft pulp (HS 4703): 0.08 million to Brazil, 0.50 million to Canada.
 # Inset: U.S. exports minus imports by product, 2024, UN Comtrade world totals (logs HS 4403, kraft pulp 4703,
 # tissue and towels 4818, plywood 4412, lumber 4407, wooden furniture 940330 to 940360). Added November 12, 2026.
+# Labels are in short tons (1 metric ton = 1.10231 short tons): 2.29 Mt = 2.52M tons, 1.84 Mt = 2.03M tons, 0.08 Mt = 0.09M, 0.50 Mt = 0.55M.
 # Routes are schematic. Usage: python3 <script> <node_modules dir> <grid.csv> <out.png>
 import csv, json, sys, os, math, collections
 import numpy as np
@@ -139,8 +140,8 @@ def lab(lon, lat, t, ha="center", va="center", fs=10.4):
     ax.text(*P(lon, lat), t, ha=ha, va=va, fontsize=fs, color=INK, bbox=box, zorder=8, linespacing=1.2)
 def tag(lon, lat, big, small, ha="center"):
     ax.text(*P(lon, lat), r"$\bf{" + big.replace(" ", r"\ ") + "}$\n" + small, ha=ha, va="center", fontsize=10.4, color=INK, bbox=box, zorder=8, linespacing=1.25)
-tag(-40.5, 13.0, "2.3M metric tons of pulp", "from Brazil to the U.S. in 2024;\n0.1M went the other way")
-tag(-103.0, 47.0, "1.8M metric tons of pulp", "from Canada to the U.S. in 2024;\n0.5M went the other way")
+tag(-40.5, 13.0, "2.5M tons of pulp", "from Brazil to the U.S. in 2024;\n0.1M went the other way")
+tag(-103.0, 47.0, "2.0M tons of pulp", "from Canada to the U.S. in 2024;\n0.6M went the other way")
 lab(-62.2, 49.4, "Saint John, N.B.\npulp mill", ha="left")
 lab(-97.5, 27.0, "Macon, Ga.\nSaint John pulp\nbecomes tissue")
 ax.plot(*zip(P(-56.0, 36.4), P(-68.4, 44.7)), color=GRY, linewidth=0.7, zorder=6)
