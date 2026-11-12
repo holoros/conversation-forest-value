@@ -159,7 +159,7 @@ for r in sorted(cfs, key=lambda r: -abs(float(r["net_musd"]))):
     lon, lat = centroid(states[r["state"]])
     x, y = albers(np.array([lon]), np.array([lat]))
     col = ORG if net > 0 else NAV
-    bx.scatter(x, y, s=(2 * rad(abs(net))) ** 2, facecolors="none" if low else col, edgecolors=col, linewidths=1.5 if low else 0.6, zorder=3, alpha=0.93)
+    bx.scatter(x, y, s=(2 * rad(abs(net))) ** 2, facecolors=col, edgecolors="white", linewidths=0.6, zorder=3, alpha=0.93)
     if r["state"] in slab:
         dx, dy, ha = slab[r["state"]]
         txt = f"{r['state']} {usd(net)}" if net > 0 else f"{r['state']} sends Maine {usd(-net)} more"
@@ -173,13 +173,12 @@ xs = [0.10, 0.34, 0.70]
 for xk, v in zip(xs, (50, 385, 1265)):
     kx.scatter([xk], [0.70], s=(2 * rad(v)) ** 2, c=ORG, edgecolors="white", linewidths=0.6, clip_on=False)
     kx.text(xk, 0.47, usd(v), ha="center", va="center", fontsize=9.2, fontweight="bold", color=INK)
-notes = [(ORG, True, "takes more from Maine than it sends"), (NAV, True, "sends Maine more than it takes"),
-         (ORG, False, "open circle: survey uncertainty above 30%")]
+notes = [(ORG, True, "takes more from Maine than it sends"), (NAV, True, "sends Maine more than it takes")]
 for i, (col, filled, t) in enumerate(notes):
     yk = 0.30 - 0.075 * i
     kx.scatter([0.03], [yk], s=42, facecolors=col if filled else "none", edgecolors=col, linewidths=1.4, clip_on=False)
     kx.text(0.075, yk, t, fontsize=8.8, color=INK, va="center")
-kx.text(0.0, -0.02, "State figures are floors because the survey\nwithholds some cells.", fontsize=8.4, color=GRY, va="bottom", linespacing=1.25)
+kx.text(0.0, -0.02, "State figures are survey estimates and floors,\nbecause the survey withholds some cells.", fontsize=8.4, color=GRY, va="bottom", linespacing=1.25)
 
 fig.savefig(OUT, dpi=300, facecolor="white")
 print("saved", OUT, round(net_pos), round(total_exp))
