@@ -14,7 +14,7 @@ PAL = {"Sawlogs": "#1F4D33", "Pulpwood": "#3B6E8F", "Biomass Chips": "#C8873F", 
 NAME = {"Sawlogs": "Sawlogs", "Pulpwood": "Pulpwood", "Biomass Chips": "Biomass chips", "Firewood/Pellets": "Firewood & pellets"}
 USE = {"Sawlogs": "lumber, studs, veneer, pallets", "Pulpwood": "paper, pulp, tissue, packaging",
        "Biomass Chips": "electricity and heat at mills", "Firewood/Pellets": "home heating"}
-BG, INK, MUT, HEAD = "#FBFAF6", "#1B2A20", "#5B6B60", "#163B27"
+BG, INK, MUT, HEAD = "#FFFFFF", "#1A1A1A", "#5B6B60", "#1A1A1A"
 rows = [r for r in csv.DictReader(open(os.path.join(HERE, "2009-2023_maine-wood-flow-by-product-mfs_DATA.csv"))) if r["product"] != "Total"]
 years = sorted({int(r["year"]) for r in rows})
 H = {p: np.array([next(float(r["harvested_gt"]) for r in rows if int(r["year"]) == y and r["product"] == p) for y in years]) / 1e6 for p in PAL}
@@ -28,12 +28,12 @@ drop = round(100 * (1 - t23 / t11))
 sh = lambda p, y: 100 * H[p][years.index(y)] / tot[years.index(y)]
 
 fig = plt.figure(figsize=(13, 6.3), dpi=300, facecolor=BG)
-fig.text(0.027, 0.925, "A fifth of Maine's harvest leaves the state as raw wood", fontsize=26, fontweight="bold", color=HEAD, family="Liberation Serif", va="center")
+fig.text(0.027, 0.925, "A fifth of Maine's harvest leaves the state as raw wood", fontsize=24, fontweight="bold", color=HEAD, va="center")
 fig.text(0.027, 0.862, f"Maine landowners harvested {t23:.1f} million green tons of wood in 2023, down {drop}% from {t11:.1f} million in 2011, and pulpwood's share fell from {sh('Pulpwood', 2011):.0f}% to {sh('Pulpwood', 2023):.0f}%.",
-         fontsize=12.6, color="#3A4A3F", va="center")
+         fontsize=12.6, color="#444444", va="center")
 
 # ---- left: the 2023 harvest, kept and exported ----
-a = fig.add_axes([0.205, 0.07, 0.355, 0.63], facecolor="white")
+a = fig.add_axes([0.205, 0.07, 0.355, 0.63], facecolor="#FAFAF8")
 order = ["Firewood/Pellets", "Biomass Chips", "Pulpwood", "Sawlogs"]
 for i, p in enumerate(order):
     ins, ex = float(r23[p]["instate_gt"]) / 1e6, float(r23[p]["exported_gt"]) / 1e6
@@ -49,7 +49,7 @@ a.set_xticklabels(["0", "1", "2", "3", "4 million\ngreen tons"], fontsize=10, co
 a.grid(axis="x", color="#DED8C8", linewidth=0.5); a.set_axisbelow(True)
 for s in a.spines.values(): s.set_visible(False)
 a.tick_params(length=0)
-fig.text(0.027, 0.79, "The 2023 harvest: 10.0 million green tons", fontsize=16, fontweight="bold", color=HEAD, family="Liberation Serif", va="center")
+fig.text(0.027, 0.79, "The 2023 harvest: 10.0 million green tons", fontsize=16, fontweight="bold", color=HEAD, va="center")
 a.barh([-9], [1], color=PAL["Sawlogs"], label="Processed by Maine mills"); a.barh([-9], [1], color=PAL["Sawlogs"], alpha=0.38, label="Exported unprocessed")
 a.legend(loc="lower left", bbox_to_anchor=(-0.02, 0.985), ncol=2, frameon=False, fontsize=9.6, handlelength=1, handleheight=1, columnspacing=1.2)
 
@@ -74,6 +74,6 @@ for k in range(1, len(lab)):
     lab[k][0] = max(lab[k][0], lab[k - 1][0] + 0.85)
 for y, p, v in lab:
     b.text(2023.4, y, f"{NAME[p]} {v:.1f} M", fontsize=11.2, fontweight="bold", color=PAL[p], va="center", clip_on=False)
-fig.text(0.60, 0.79, "Tons harvested by product, 2009 to 2023", fontsize=16, fontweight="bold", color=HEAD, family="Liberation Serif", va="center")
+fig.text(0.60, 0.79, "Tons harvested by product, 2009 to 2023", fontsize=16, fontweight="bold", color=HEAD, va="center")
 fig.savefig(sys.argv[1], dpi=300, facecolor=BG)
 print("saved", round(t11, 2), round(t23, 2), drop, [round(H[p][-1], 2) for p in stack])

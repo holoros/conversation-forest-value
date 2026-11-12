@@ -220,8 +220,8 @@ leg = ax.legend(handles=handles, loc="lower right", bbox_to_anchor=(0.995, 0.012
                 edgecolor=INK, fancybox=True, borderpad=0.7, labelspacing=0.55, handletextpad=0.5)
 leg.get_frame().set_linewidth(0.7); leg.set_zorder(12)
 
-fig.text(0.126, 0.955, "When a pulp mill closes, sawmills feel it too", fontfamily="Liberation Serif", fontweight="bold", fontsize=21,
-         color=GRN, ha="left", va="center")
+fig.text(0.126, 0.955, "When a pulp mill closes, sawmills feel it too", fontweight="bold", fontsize=20,
+         color="#1A1A1A", ha="left", va="center")
 fig.text(0.126, 0.899, "Sawmills sell their chips and sawdust to pulp mills, so each closure reaches well beyond the mill town.\n"
          "Seven Maine paper mills have closed since 2008, and one in New Brunswick was idled in 2026.",
          fontsize=10.6, color=INK, ha="left", va="center", linespacing=1.3)
