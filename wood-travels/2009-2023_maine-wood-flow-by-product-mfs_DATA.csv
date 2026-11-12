@@ -1,0 +1,76 @@
+year,product,instate_gt,exported_gt,harvested_gt,imported_gt,processed_gt,source_url,note
+2009,Sawlogs,2336764,1078344,3415108,271789,2608553,https://digitalmaine.com/cgi/viewcontent.cgi?article=1082&context=for_docs,MBF a 531768 b 244033 c 775801 d 62777 e 594545
+2009,Pulpwood,6056014,1131958,7187972,1934200,7990214,https://digitalmaine.com/cgi/viewcontent.cgi?article=1082&context=for_docs,
+2009,Biomass Chips,3141650,276807,3418457,800425,3942075,https://digitalmaine.com/cgi/viewcontent.cgi?article=1082&context=for_docs,
+2009,Firewood/Pellets,246510,8283,254793,0,246510,https://digitalmaine.com/cgi/viewcontent.cgi?article=1082&context=for_docs,cords a 98604 b 3313 c 101917; 1 cord = 2.5 gt
+2009,Total,11780938,2495391,14276329,3006414,14787352,https://digitalmaine.com/cgi/viewcontent.cgi?article=1082&context=for_docs,
+2010,Sawlogs,2475727,1021000,3496727,420477,2896204,https://digitalmaine.com/cgi/viewcontent.cgi?article=1081&context=for_docs,MBF a 563813 b 232741 c 796554 d 97149 e 660962
+2010,Pulpwood,6415977,1004795,7420772,2079277,8495254,https://digitalmaine.com/cgi/viewcontent.cgi?article=1081&context=for_docs,
+2010,Biomass Chips,3226860,237146,3464006,592793,3819653,https://digitalmaine.com/cgi/viewcontent.cgi?article=1081&context=for_docs,
+2010,Firewood/Pellets,205145,3688,208833,580,205725,https://digitalmaine.com/cgi/viewcontent.cgi?article=1081&context=for_docs,cords a 82058 b 1475 c 83533 d 232 e 82290
+2010,Total,12323709,2266628,14590337,3093127,15416836,https://digitalmaine.com/cgi/viewcontent.cgi?article=1081&context=for_docs,
+2011,Sawlogs,2353770,805703,3159473,379286,2733056,https://digitalmaine.com/cgi/viewcontent.cgi?article=1080&context=for_docs,MBF a 536409 b 181713 c 718122 d 87603 e 624012
+2011,Pulpwood,6734027,880257,7614284,2299479,9033506,https://digitalmaine.com/cgi/viewcontent.cgi?article=1080&context=for_docs,
+2011,Biomass Chips,2112933,315314,2428247,332475,2445408,https://digitalmaine.com/cgi/viewcontent.cgi?article=1080&context=for_docs,
+2011,Firewood/Pellets,266195,0,266195,475,266670,https://digitalmaine.com/cgi/viewcontent.cgi?article=1080&context=for_docs,cords a 106478 b 0 c 106478 d 190 e 106668
+2011,Total,11466925,2001274,13468199,3011715,14478640,https://digitalmaine.com/cgi/viewcontent.cgi?article=1080&context=for_docs,
+2012,Sawlogs,2708554,1336988,4045542,459435,3167989,https://digitalmaine.com/cgi/viewcontent.cgi?article=1018&context=for_docs,MBF a 616324 b 306741 c 923065 d 104751 e 721075
+2012,Pulpwood,5970185,741607,6711792,2455651,8425836,https://digitalmaine.com/cgi/viewcontent.cgi?article=1018&context=for_docs,
+2012,Biomass Chips,2235085,120049,2355134,380846,2615931,https://digitalmaine.com/cgi/viewcontent.cgi?article=1018&context=for_docs,
+2012,Firewood/Pellets,364840,0,364840,538,365378,https://digitalmaine.com/cgi/viewcontent.cgi?article=1018&context=for_docs,cords a 145936 b 0 c 145936 d 215 e 146151
+2012,Total,11278664,2198644,13477308,3296469,14575133,https://digitalmaine.com/cgi/viewcontent.cgi?article=1018&context=for_docs,
+2013,Sawlogs,2739298,1093860,3833158,480375,3219673,https://digitalmaine.com/cgi/viewcontent.cgi?article=1040&context=for_docs,MBF a 623943 b 255576 c 879519 d 110057 e 734000; MFS flags under reporting from pulp mill closures
+2013,Pulpwood,6813575,752257,7565832,1896314,8709889,https://digitalmaine.com/cgi/viewcontent.cgi?article=1040&context=for_docs,under reporting flagged by MFS
+2013,Biomass Chips,2420506,272695,2693201,388804,2809310,https://digitalmaine.com/cgi/viewcontent.cgi?article=1040&context=for_docs,
+2013,Firewood/Pellets,255565,4940,260505,1925,257490,https://digitalmaine.com/cgi/viewcontent.cgi?article=1040&context=for_docs,cords a 102226 b 1976 c 104202 d 770 e 102996
+2013,Total,12228944,2123752,14352696,2767418,14996362,https://digitalmaine.com/cgi/viewcontent.cgi?article=1040&context=for_docs,
+2014,Sawlogs,3059921,945424,4005344,499205,3559126,https://digitalmaine.com/cgi/viewcontent.cgi?article=1047&context=for_docs,MBF a 689770 b 215815 c 905585 d 114917 e 804687
+2014,Pulpwood,6372938,916332,7289270,2334244,8707182,https://digitalmaine.com/cgi/viewcontent.cgi?article=1047&context=for_docs,
+2014,Biomass Chips,2695571,199193,2894764,339578,3035149,https://digitalmaine.com/cgi/viewcontent.cgi?article=1047&context=for_docs,
+2014,Firewood/Pellets,367573,6290,373863,500,368073,https://digitalmaine.com/cgi/viewcontent.cgi?article=1047&context=for_docs,cords a 147029 b 2516 c 149545 d 200 e 147229
+2014,Total,12496002,2067239,14563241,3173527,15669530,https://digitalmaine.com/cgi/viewcontent.cgi?article=1047&context=for_docs,
+2015,Sawlogs,2953745,1250084,4203829,736027,3689772,https://digitalmaine.com/cgi/viewcontent.cgi?article=1048&context=for_docs,MBF a 676934 b 274287 c 951221 d 168693 e 845627
+2015,Pulpwood,6113181,929986,7043167,2155890,8269071,https://digitalmaine.com/cgi/viewcontent.cgi?article=1048&context=for_docs,
+2015,Biomass Chips,2595719,414984,3010703,296838,2892557,https://digitalmaine.com/cgi/viewcontent.cgi?article=1048&context=for_docs,
+2015,Firewood/Pellets,351878,125,352003,2620,354498,https://digitalmaine.com/cgi/viewcontent.cgi?article=1048&context=for_docs,cords a 140751 b 50 c 140801 d 1048 e 141799
+2015,Total,12014522,2595179,14609702,3191375,15205897,https://digitalmaine.com/cgi/viewcontent.cgi?article=1048&context=for_docs,
+2016,Sawlogs,3079603,1120766,4200369,661490,3741093,https://digitalmaine.com/cgi/viewcontent.cgi?article=1053&context=for_docs,MBF a 702465 b 246216 c 948681 d 152913 e 855378
+2016,Pulpwood,5539226,661157,6200383,1655963,7195189,https://digitalmaine.com/cgi/viewcontent.cgi?article=1053&context=for_docs,
+2016,Biomass Chips,1739441,507640,2247081,298713,2038154,https://digitalmaine.com/cgi/viewcontent.cgi?article=1053&context=for_docs,
+2016,Firewood/Pellets,146838,6313,153150,18,146855,https://digitalmaine.com/cgi/viewcontent.cgi?article=1053&context=for_docs,cords a 58735 b 2525 c 61260 d 7 e 58742; series break: pellet mill sawmill residue reclassified out of firewood from 2016
+2016,Total,10505108,2295875,12800983,2616183,13121291,https://digitalmaine.com/cgi/viewcontent.cgi?article=1053&context=for_docs,
+2017,Sawlogs,2904281,1281010,4185292,856726,3761007,https://digitalmaine.com/cgi/viewcontent.cgi?article=1136&context=for_docs,MBF a 664942 b 289353 c 954295 d 196910 e 861852
+2017,Pulpwood,4871890,613411,5485301,1611279,6483169,https://digitalmaine.com/cgi/viewcontent.cgi?article=1136&context=for_docs,
+2017,Biomass Chips,1957446,393022,2350468,299112,2256558,https://digitalmaine.com/cgi/viewcontent.cgi?article=1136&context=for_docs,
+2017,Firewood/Pellets,250238,2928,253165,12840,263078,https://digitalmaine.com/cgi/viewcontent.cgi?article=1136&context=for_docs,cords a 100095 b 1171 c 101266 d 5136 e 105231
+2017,Total,9983855,2290371,12274226,2779957,12763811,https://digitalmaine.com/cgi/viewcontent.cgi?article=1136&context=for_docs,
+2018,Sawlogs,3171045,1104804,4275849,881528,4052573,https://lldc.mainelegislature.org/Open/Rpts/hd9757_m2m344_2018.pdf,MBF a 730478 b 251425 c 981903 d 202762 e 933240; Dec 2 2019 release; a Mar 29 2021 update exists and was not opened
+2018,Pulpwood,4759300,631752,5391052,1701227,6460527,https://lldc.mainelegislature.org/Open/Rpts/hd9757_m2m344_2018.pdf,
+2018,Biomass Chips,1895263,308882,2204145,301973,2197236,https://lldc.mainelegislature.org/Open/Rpts/hd9757_m2m344_2018.pdf,
+2018,Firewood/Pellets,271268,1963,273230,13703,284970,https://lldc.mainelegislature.org/Open/Rpts/hd9757_m2m344_2018.pdf,cords a 108507 b 785 c 109292 d 5481 e 113988
+2018,Total,10096875,2047401,12144276,2898431,12995306,https://lldc.mainelegislature.org/Open/Rpts/hd9757_m2m344_2018.pdf,
+2019,Sawlogs,2805745,1260290,4066035,981423,3787169,https://digitalmaine.com/cgi/viewcontent.cgi?article=1280&context=for_docs,MBF a 641960 b 285225 c 927185 d 226122 e 868082
+2019,Pulpwood,6298570,791091,7089661,2364884,8663454,https://digitalmaine.com/cgi/viewcontent.cgi?article=1280&context=for_docs,
+2019,Biomass Chips,1285421,333799,1619220,139344,1424765,https://digitalmaine.com/cgi/viewcontent.cgi?article=1280&context=for_docs,
+2019,Firewood/Pellets,316663,5855,322518,17610,334273,https://digitalmaine.com/cgi/viewcontent.cgi?article=1280&context=for_docs,cords a 126665 b 2342 c 129007 d 7044 e 133709
+2019,Total,10706399,2391035,13097433,3503261,14209660,https://digitalmaine.com/cgi/viewcontent.cgi?article=1280&context=for_docs,
+2020,Sawlogs,2903927,1191605,4095531,943967,3847894,https://digitalmaine.com/cgi/viewcontent.cgi?article=1294&context=for_docs,MBF a 667638 b 271360 c 938998 d 215442 e 883080
+2020,Pulpwood,4613056,710566,5323622,1702640,6315696,https://digitalmaine.com/cgi/viewcontent.cgi?article=1294&context=for_docs,
+2020,Biomass Chips,1331095,159882,1490977,162621,1493716,https://digitalmaine.com/cgi/viewcontent.cgi?article=1294&context=for_docs,
+2020,Firewood/Pellets,267793,3543,271335,15038,282830,https://digitalmaine.com/cgi/viewcontent.cgi?article=1294&context=for_docs,cords a 107117 b 1417 c 108534 d 6015 e 113132
+2020,Total,9115870,2065595,11181465,2824265,11940136,https://digitalmaine.com/cgi/viewcontent.cgi?article=1294&context=for_docs,
+2021,Sawlogs,2904520,1123134,4027654,840574,3745095,https://plcloggers.org/wp-content/uploads/2024/10/FINAL_2021_WoodprocessorReport.pdf,MBF a 665123 b 249557 c 914680 d 192134 e 857257; PLC mirror of the Sep 3 2024 MFS release
+2021,Pulpwood,4138876,610613,4749489,1351248,5490124,https://plcloggers.org/wp-content/uploads/2024/10/FINAL_2021_WoodprocessorReport.pdf,
+2021,Biomass Chips,1451963,264887,1716850,137534,1589497,https://plcloggers.org/wp-content/uploads/2024/10/FINAL_2021_WoodprocessorReport.pdf,
+2021,Firewood/Pellets,216458,33120,249578,44623,261080,https://plcloggers.org/wp-content/uploads/2024/10/FINAL_2021_WoodprocessorReport.pdf,cords a 86583 b 13248 c 99831 d 17849 e 104432
+2021,Total,8711817,2031754,10743571,2373979,11085796,https://plcloggers.org/wp-content/uploads/2024/10/FINAL_2021_WoodprocessorReport.pdf,
+2022,Sawlogs,2968465,1033408,4001874,765715,3734180,https://digitalmaine.com/cgi/viewcontent.cgi?article=1327&context=for_docs,MBF a 681809 b 229608 c 911418 d 177460 e 859270
+2022,Pulpwood,4540287,446779,4987066,1581760,6122047,https://digitalmaine.com/cgi/viewcontent.cgi?article=1327&context=for_docs,
+2022,Biomass Chips,1189429,141263,1330692,172604,1362033,https://digitalmaine.com/cgi/viewcontent.cgi?article=1327&context=for_docs,
+2022,Firewood/Pellets,229292,1318,230610,3718,233009,https://digitalmaine.com/cgi/viewcontent.cgi?article=1327&context=for_docs,cords a 99734 b 498 c 100232 d 1740 e 101474
+2022,Total,8927473,1622769,10550241,2523796,11451269,https://digitalmaine.com/cgi/viewcontent.cgi?article=1327&context=for_docs,
+2023,Sawlogs,2768610,1108708,3877318,1073544,3842155,https://digitalmaine.com/cgi/viewcontent.cgi?article=1328&context=for_docs,MBF a 637164 b 252708 c 889872 d 245437 e 882601; published Jun 20 2025
+2023,Pulpwood,3842493,568755,4411248,1423253,5265746,https://digitalmaine.com/cgi/viewcontent.cgi?article=1328&context=for_docs,
+2023,Biomass Chips,943797,333867,1277664,206684,1150481,https://digitalmaine.com/cgi/viewcontent.cgi?article=1328&context=for_docs,
+2023,Firewood/Pellets,428813,1565,430378,17744,446557,https://digitalmaine.com/cgi/viewcontent.cgi?article=1328&context=for_docs,cords a 180711 b 592 c 181304 d 7439 e 188150
+2023,Total,7983714,2012895,9996609,2721225,10704939,https://digitalmaine.com/cgi/viewcontent.cgi?article=1328&context=for_docs,
