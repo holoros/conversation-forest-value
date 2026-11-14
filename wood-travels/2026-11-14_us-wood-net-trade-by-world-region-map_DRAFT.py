@@ -91,7 +91,7 @@ BUY, SELL = "#2B5C8A", "#D9692E"
 
 fig = plt.figure(figsize=(10, 5.9), dpi=300); fig.patch.set_facecolor("white")
 fig.text(0.04, 0.94, f"The U.S. spends more on wood and paper than it earns in {['zero','one','two','three','four','five','six','seven','eight'][nneg]} of eight world regions", fontweight="bold", fontsize=16.4, color="#1A1A1A", ha="left", va="center")
-fig.text(0.04, 0.878, f"In 2024 the U.S. bought {B(imp)} of logs, wood products, pulp, and paper abroad and sold {B(exp_)}, federal estimates show. It shipped out more\ntons than it brought in, but a ton coming in was worth about \\${imp / kti * 1000:,.0f} and a ton going out about \\${exp_ / kto * 1000:,.0f}, a sign that raw\nmaterials leave and value-added products come back. Circle area is the dollar gap, U.S. sold minus bought.", fontsize=10.6, color=INK, ha="left", va="center", linespacing=1.3)
+fig.text(0.04, 0.878, f"In 2024 the U.S. bought {B(imp)} of logs, wood products, pulp, and paper abroad and sold {B(exp_)}, federal estimates show. It sold more logs, pulp,\nand bulk paper than it bought and bought more lumber, panels, and finished paper goods than it sold. A ton coming in was worth about \\${round(imp / kti * 1000, -1):,.0f}\nand a ton going out about \\${round(exp_ / kto * 1000, -1):,.0f}. Circle area is the dollar gap, U.S. sold minus bought.", fontsize=10.6, color=INK, ha="left", va="center", linespacing=1.3)
 
 ax = fig.add_axes([0.02, 0.07, 0.66, 0.74]); ax.set_axis_off(); ax.set_aspect("equal")
 for name, rings in world.items():
@@ -110,7 +110,7 @@ for k, (i, o) in sorted(reg.items(), key=lambda t: -abs(t[1][1] - t[1][0])):
     txt = f"{nice.get(k, k)}\n{'+' if net > 0 else '−'}{amt}"
     ax.annotate(txt, (x[0], y[0]), xytext=(dx, dy), textcoords="offset points", ha=ha, va="center", fontsize=9.4, fontweight="bold", color="white" if k == "Canada" else INK,
                 path_effects=None if k == "Canada" else halo, zorder=5, linespacing=1.1)
-pp = (imp - exp_) * 1e6 / 341785457                      # U.S. resident population, Census Bureau July 1, 2025 estimates (sum of the state file)
+pp = (imp - exp_) * 1e6 / 341784857                      # U.S. resident population, Census Bureau July 1, 2025 estimates (sum of the state file)
 xu, yu = equal_earth(np.array([-117.0]), np.array([33.0])); xt, yt = equal_earth(np.array([-166.0]), np.array([-4.0]))
 ax.annotate(f"UNITED STATES\nbought {B(imp)}\nsold {B(exp_)}\ngap {B(imp - exp_)}\n\\${pp:.0f} per resident", (xu[0], yu[0]), xytext=(xt[0], yt[0]), textcoords="data", ha="left", va="top",
             fontsize=9.4, fontweight="bold", color=INK, path_effects=halo, arrowprops=dict(arrowstyle="-", color=INK, lw=0.8, relpos=(0.3, 1.0)), zorder=6, linespacing=1.2)
@@ -125,8 +125,9 @@ for j, k in enumerate(order):
     y = len(order) - 1 - j; i, o = reg[k]
     b.barh(y + 0.19, i, height=0.36, color=BUY); b.barh(y - 0.19, o, height=0.36, color=SELL)
     b.text(-600, y, nice.get(k, k).replace("\n", " ").replace("Southwest and Central Asia", "SW and Central Asia").replace("Southeast Asia and Oceania", "SE Asia and Oceania"), ha="right", va="center", fontsize=9.2, fontweight="bold", color=INK)
-    b.text(max(i, o) + 500, y, f"{B(i)} / {B(o)}", ha="left", va="center", fontsize=9, color=INK)
-b.set_xlim(0, 37000); b.set_ylim(-0.7, len(order) - 0.3); b.set_axis_off()
-fig.text(0.80, 0.80, "U.S. BOUGHT", fontsize=10, fontweight="bold", color=BUY, ha="left", va="center"); fig.text(0.905, 0.80, "/ SOLD", fontsize=10, fontweight="bold", color=SELL, ha="left", va="center")
-fig.text(0.04, 0.035, "Modeled estimates from the federal Freight Analysis Framework (2024). Wooden furniture, not counted here, adds a gap of about \\$14B (U.N. data).\nCenter for Research on Sustainable Forests, University of Maine.", fontsize=9, color=GRY, ha="left", va="center", linespacing=1.3)
+    Bm = lambda v: B(v) if v >= 1000 else f"\\${v:.0f}M"
+    b.text(max(i, o) + 500, y, f"{Bm(i)} / {Bm(o)}", ha="left", va="center", fontsize=9, color=INK)
+b.set_xlim(0, 41000); b.set_ylim(-0.7, len(order) - 0.3); b.set_axis_off()
+fig.text(0.80, 0.80, "U.S. BOUGHT", fontsize=10, fontweight="bold", color=BUY, ha="left", va="center"); fig.text(0.897, 0.80, "/ SOLD", fontsize=10, fontweight="bold", color=SELL, ha="left", va="center")
+fig.text(0.04, 0.035, "Modeled estimates from the federal Freight Analysis Framework (2024); the per resident figure uses 2025 population. Wooden furniture, not counted here,\nadds a gap of about \\$14B (U.N. data). Center for Research on Sustainable Forests, University of Maine.", fontsize=9, color=GRY, ha="left", va="center", linespacing=1.3)
 fig.savefig(OUT, dpi=300, facecolor="white"); print("saved", OUT)

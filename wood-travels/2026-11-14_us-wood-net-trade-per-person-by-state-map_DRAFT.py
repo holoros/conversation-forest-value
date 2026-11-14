@@ -100,7 +100,7 @@ LABS = ["buys \\$500+ more", "buys \\$100 to \\$500 more", "about even", "sells 
 def cls(v):
     return sum(v >= e for e in EDGES)
 def money(v):
-    return ("+" if v >= 0 else "\u2212") + f"\\${abs(v):,.0f}"
+    return ("+" if v >= 0 else "\u2212") + f"\\${round(abs(v), -1):,.0f}"
 skip = {"Alaska", "Hawaii", "Puerto Rico", "Guam", "American Samoa", "United States Virgin Islands", "Commonwealth of the Northern Mariana Islands"}
 key = {"District of Columbia": "Washington DC"}
 
@@ -122,12 +122,12 @@ def draw(ax, k, labels=None, lw=0.5):
                     color=INK, path_effects=halo, zorder=6, arrowprops=dict(arrowstyle="-", color=INK, lw=0.7, shrinkA=0, shrinkB=1) if abs(dx) + abs(dy) > 26 else None)
 
 fig = plt.figure(figsize=(10, 8.6), dpi=300); fig.patch.set_facecolor("white")
-fig.text(0.04, 0.957, "Per person, Maine nets more from wood and paper than any other state", fontweight="bold", fontsize=18, color="#1A1A1A", ha="left", va="center")
-fig.text(0.04, 0.917, f"In 2024 Maine shipped out \\${val['Maine'][0]:,.0f} more wood, pulp, and paper per resident than it brought in, federal estimates show, narrowly ahead\n"
-         f"of Oregon and Arkansas. Massachusetts brought in \\${-val['Massachusetts'][0]:,.0f} more per resident than it shipped out, and New Hampshire \\${-val['New Hampshire'][0]:,.0f} more.", fontsize=10.6, color=INK, ha="left", va="center", linespacing=1.3)
+fig.text(0.04, 0.957, "Per person, Maine ships out more wood and paper on net than any other state", fontweight="bold", fontsize=17, color="#1A1A1A", ha="left", va="center")
+fig.text(0.04, 0.917, f"In 2024 Maine shipped out about \\${round(val['Maine'][0], -1):,.0f} more wood, pulp, and paper per resident than it brought in, federal estimates show, narrowly\n"
+         f"ahead of Oregon. Massachusetts brought in about \\${round(-val['Massachusetts'][0], -1):,.0f} more per resident than it shipped out, and New Hampshire about \\${round(-val['New Hampshire'][0], -1):,.0f} more.", fontsize=10.6, color=INK, ha="left", va="center", linespacing=1.3)
 
 a = fig.add_axes([0.02, 0.395, 0.60, 0.455])
-draw(a, 0, {"Maine": (26, 20, "left"), "Oregon": (0, 0, "in"), "Arkansas": (-74, -4, "right"), "Massachusetts": (34, -34, "left"), "California": (-10, -70, "center"), "Texas": (-18, -62, "center")})
+draw(a, 0, {"Maine": (26, 20, "left"), "Oregon": (0, 0, "in"), "Arkansas": (-74, -4, "right"), "Massachusetts": (14, -50, "left"), "California": (16, -72, "center"), "Texas": (-18, -62, "center")})
 fig.text(0.04, 0.868, "ALL WOOD, PULP, AND PAPER: SHIPPED OUT MINUS BROUGHT IN, PER RESIDENT", fontsize=10, fontweight="bold", color=INK, ha="left", va="center")
 lx = fig.add_axes([0.04, 0.368, 0.56, 0.03]); lx.set_axis_off(); lx.set_xlim(0, 6); lx.set_ylim(0, 1)
 for i, (c, t) in enumerate(zip(COLS, ["brings in\n\\$500+ more", "brings in \\$100\nto \\$500 more", "within \\$100\neither way", "ships out \\$100\nto \\$500 more", "ships out \\$500\nto \\$1,500 more", "ships out\n\\$1,500+ more"])):
@@ -142,13 +142,13 @@ for s, y in zip(grp, ys):
     b.barh(y, v, height=0.66, color=COLS[cls(v)], edgecolor="#1F4D36" if s == "Maine" else "#9A9A9A", linewidth=1.4 if s == "Maine" else 0.6)
     b.text(-70 if v >= 0 else 70, y, s, ha="right" if v >= 0 else "left", va="center", fontsize=9.4, fontweight="bold", color="#1F4D36" if s == "Maine" else INK)
     b.text(v + (45 if v >= 0 else -45), y, money(v), ha="left" if v >= 0 else "right", va="center", fontsize=9.2, fontweight="bold", color=INK)
-b.plot([0, 0], [-0.5, ys[0] + 0.45], color=INK, lw=0.9); b.set_xlim(-1750, 3300); b.set_ylim(-0.7, len(grp) + 0.4); b.set_axis_off()
-b.text(-1750, ys[0] + 0.78, "TOP FIVE SELLERS", fontsize=9.4, fontweight="bold", color=GRY, ha="left", va="center")
+b.plot([0, 0], [ys[4] - 0.45, ys[0] + 0.45], color=INK, lw=0.9); b.plot([0, 0], [-0.5, ys[5] + 0.45], color=INK, lw=0.9); b.set_xlim(-1750, 3300); b.set_ylim(-0.7, len(grp) + 0.4); b.set_axis_off()
+b.text(-1750, ys[0] + 0.78, "TOP FIVE NET SHIPPERS", fontsize=9.4, fontweight="bold", color=GRY, ha="left", va="center")
 b.text(-1750, ys[5] + 0.72, "NEW ENGLAND AND NEW YORK", fontsize=9.4, fontweight="bold", color=GRY, ha="left", va="center")
 fig.text(0.715, 0.868, "NET DOLLARS PER RESIDENT", fontsize=10, fontweight="bold", color=INK, ha="left", va="center")
 
-for j, (k, title, labs) in enumerate([(1, "LOGS, LUMBER, AND PANELS", {"Maine": (20, 14, "left"), "Oregon": (-34, -30, "right2")}), (2, "PULP AND PAPER", {"Maine": (20, 14, "left"), "Louisiana": (-2, -30, "center")})]):
+for j, (k, title, labs) in enumerate([(1, "LOGS, LUMBER, AND PANELS", {"Maine": (20, 10, "left"), "Oregon": (-34, -30, "right2")}), (2, "PULP AND PAPER", {"Maine": (20, 14, "left"), "Louisiana": (-2, -30, "center")})]):
     c = fig.add_axes([0.02 + 0.49 * j, 0.068, 0.47, 0.222]); draw(c, k, labs, lw=0.4)
     fig.text(0.04 + 0.49 * j, 0.300, title + ", PER RESIDENT (SAME COLORS)", fontsize=10, fontweight="bold", color=INK, ha="left", va="center")
-fig.text(0.04, 0.030, "Counts shipments to and from other states and other countries, including goods passing through warehouses and ports; it does not measure what residents use.\nAlaska and Hawaii, both net buyers overall, are not shown. Modeled estimates from the federal Freight Analysis Framework (2024) and Census Bureau\npopulation (2025). Furniture is not included. Center for Research on Sustainable Forests, University of Maine.", fontsize=9, color=GRY, ha="left", va="center", linespacing=1.3)
+fig.text(0.04, 0.030, "Counts shipments to and from other states and countries, including goods passing through warehouses and ports, not what residents use. The estimates\nundercount raw logs crossing the Canadian border, so small gaps between states are uncertain. Alaska and Hawaii, which bring in more than they ship out, are\nnot shown. Modeled estimates from the federal Freight Analysis Framework (2024) and Census Bureau population (2025). Furniture is not included. Center for Research on Sustainable Forests, University of Maine.", fontsize=9, color=GRY, ha="left", va="center", linespacing=1.3)
 fig.savefig(OUT, dpi=300, facecolor="white"); print("saved", OUT)
