@@ -114,37 +114,41 @@ def draw(ax, k, labels=None, lw=0.5):
     ax.set_xlim(-0.395, 0.405); ax.set_ylim(-0.235, 0.245)
     for name, (dx, dy, ha) in (labels or {}).items():
         lon, lat = centroid(states[name]); x, y = albers(np.array([lon]), np.array([lat]))
-        ax.annotate(f"{name} {money(val[name][k])}", (x[0], y[0]), xytext=(dx, dy), textcoords="offset points", ha=ha, va="center", fontsize=9.2, fontweight="bold",
+        if ha == "in":
+            ax.text(x[0], y[0], f"{name}\n{money(val[name][k])}", ha="center", va="center", fontsize=9.2, fontweight="bold", color="white", linespacing=1.1, zorder=6)
+            continue
+        sep = "\n" if ha == "right2" else " "; ha = "right" if ha == "right2" else ha
+        ax.annotate(f"{name}{sep}{money(val[name][k])}", (x[0], y[0]), xytext=(dx, dy), textcoords="offset points", ha=ha, linespacing=1.1, va="center", fontsize=9.2, fontweight="bold",
                     color=INK, path_effects=halo, zorder=6, arrowprops=dict(arrowstyle="-", color=INK, lw=0.7, shrinkA=0, shrinkB=1) if abs(dx) + abs(dy) > 26 else None)
 
 fig = plt.figure(figsize=(10, 8.6), dpi=300); fig.patch.set_facecolor("white")
-fig.text(0.04, 0.957, "Per person, Maine sells more wood than any other state", fontweight="bold", fontsize=20, color="#1A1A1A", ha="left", va="center")
-fig.text(0.04, 0.917, f"In 2024 Maine sold \\${val['Maine'][0]:,.0f} more wood, pulp, and paper per resident than it bought. Massachusetts bought \\${-val['Massachusetts'][0]:,.0f} more per resident\n"
-         f"than it sold, and the U.S. as a whole bought \\${-us_pp:,.0f} more per person abroad than it sold.", fontsize=10.6, color=INK, ha="left", va="center", linespacing=1.3)
+fig.text(0.04, 0.957, "Per person, Maine nets more from wood and paper than any other state", fontweight="bold", fontsize=18, color="#1A1A1A", ha="left", va="center")
+fig.text(0.04, 0.917, f"In 2024 Maine shipped out \\${val['Maine'][0]:,.0f} more wood, pulp, and paper per resident than it brought in, federal estimates show, narrowly ahead\n"
+         f"of Oregon and Arkansas. Massachusetts brought in \\${-val['Massachusetts'][0]:,.0f} more per resident than it shipped out, and New Hampshire \\${-val['New Hampshire'][0]:,.0f} more.", fontsize=10.6, color=INK, ha="left", va="center", linespacing=1.3)
 
 a = fig.add_axes([0.02, 0.395, 0.60, 0.455])
-draw(a, 0, {"Maine": (26, 20, "left"), "Oregon": (-6, 30, "center"), "Arkansas": (-70, -60, "center"), "Massachusetts": (46, -4, "left"), "California": (-6, -64, "center"), "Texas": (0, -52, "center")})
-fig.text(0.04, 0.868, "ALL WOOD, PULP, AND PAPER: SOLD MINUS BOUGHT, PER RESIDENT", fontsize=10, fontweight="bold", color=INK, ha="left", va="center")
+draw(a, 0, {"Maine": (26, 20, "left"), "Oregon": (0, 0, "in"), "Arkansas": (-74, -4, "right"), "Massachusetts": (34, -34, "left"), "California": (-10, -70, "center"), "Texas": (-18, -62, "center")})
+fig.text(0.04, 0.868, "ALL WOOD, PULP, AND PAPER: SHIPPED OUT MINUS BROUGHT IN, PER RESIDENT", fontsize=10, fontweight="bold", color=INK, ha="left", va="center")
 lx = fig.add_axes([0.04, 0.368, 0.56, 0.03]); lx.set_axis_off(); lx.set_xlim(0, 6); lx.set_ylim(0, 1)
-for i, (c, t) in enumerate(zip(COLS, ["buys \\$500+\nmore", "buys \\$100\nto \\$500", "about\neven", "sells \\$100\nto \\$500", "sells \\$500\nto \\$1,500", "sells\n\\$1,500+"])):
+for i, (c, t) in enumerate(zip(COLS, ["brings in\n\\$500+ more", "brings in \\$100\nto \\$500 more", "within \\$100\neither way", "ships out \\$100\nto \\$500 more", "ships out \\$500\nto \\$1,500 more", "ships out\n\\$1,500+ more"])):
     lx.add_patch(Rectangle((i, 0.45), 1, 0.55, facecolor=c, edgecolor="white", lw=0.8))
     lx.text(i + 0.5, 0.30, t, ha="center", va="top", fontsize=9, color=INK, linespacing=1.1)
 
-b = fig.add_axes([0.715, 0.375, 0.255, 0.475])
+b = fig.add_axes([0.715, 0.375, 0.255, 0.455])
 grp = rank[:5] + ["Vermont", "Connecticut", "Rhode Island", "Massachusetts", "New York", "New Hampshire"]
 ys = list(range(len(grp)))[::-1]; ys = [y + (0.7 if i < 5 else 0) for i, y in enumerate(ys)]
 for s, y in zip(grp, ys):
     v = val[s][0]
-    b.barh(y, v, height=0.66, color=COLS[cls(v)], edgecolor="#1F4D36" if s == "Maine" else "none", linewidth=1.4)
+    b.barh(y, v, height=0.66, color=COLS[cls(v)], edgecolor="#1F4D36" if s == "Maine" else "#9A9A9A", linewidth=1.4 if s == "Maine" else 0.6)
     b.text(-70 if v >= 0 else 70, y, s, ha="right" if v >= 0 else "left", va="center", fontsize=9.4, fontweight="bold", color="#1F4D36" if s == "Maine" else INK)
     b.text(v + (45 if v >= 0 else -45), y, money(v), ha="left" if v >= 0 else "right", va="center", fontsize=9.2, fontweight="bold", color=INK)
 b.plot([0, 0], [-0.5, ys[0] + 0.45], color=INK, lw=0.9); b.set_xlim(-1750, 3300); b.set_ylim(-0.7, len(grp) + 0.4); b.set_axis_off()
 b.text(-1750, ys[0] + 0.78, "TOP FIVE SELLERS", fontsize=9.4, fontweight="bold", color=GRY, ha="left", va="center")
-b.text(-1750, ys[5] + 0.72, "MAINE'S NEIGHBORS", fontsize=9.4, fontweight="bold", color=GRY, ha="left", va="center")
-fig.text(0.715, 0.868, "DOLLARS PER RESIDENT", fontsize=10, fontweight="bold", color=INK, ha="left", va="center")
+b.text(-1750, ys[5] + 0.72, "NEW ENGLAND AND NEW YORK", fontsize=9.4, fontweight="bold", color=GRY, ha="left", va="center")
+fig.text(0.715, 0.868, "NET DOLLARS PER RESIDENT", fontsize=10, fontweight="bold", color=INK, ha="left", va="center")
 
-for j, (k, title, labs) in enumerate([(1, "LOGS, LUMBER, AND PANELS", {"Maine": (20, 14, "left"), "Oregon": (-34, -44, "center")}), (2, "PULP AND PAPER", {"Maine": (20, 14, "left"), "Louisiana": (-2, -30, "center")})]):
-    c = fig.add_axes([0.02 + 0.49 * j, 0.055, 0.47, 0.235]); draw(c, k, labs, lw=0.4)
-    fig.text(0.04 + 0.49 * j, 0.300, title, fontsize=10, fontweight="bold", color=INK, ha="left", va="center")
-fig.text(0.04, 0.026, "Counts trade with other states and other countries. Modeled estimates from the federal Freight Analysis Framework (2024)\nand Census Bureau population estimates (2025). Furniture is not included. Center for Research on Sustainable Forests, University of Maine.", fontsize=9, color=GRY, ha="left", va="center", linespacing=1.3)
+for j, (k, title, labs) in enumerate([(1, "LOGS, LUMBER, AND PANELS", {"Maine": (20, 14, "left"), "Oregon": (-34, -30, "right2")}), (2, "PULP AND PAPER", {"Maine": (20, 14, "left"), "Louisiana": (-2, -30, "center")})]):
+    c = fig.add_axes([0.02 + 0.49 * j, 0.068, 0.47, 0.222]); draw(c, k, labs, lw=0.4)
+    fig.text(0.04 + 0.49 * j, 0.300, title + ", PER RESIDENT (SAME COLORS)", fontsize=10, fontweight="bold", color=INK, ha="left", va="center")
+fig.text(0.04, 0.030, "Counts shipments to and from other states and other countries, including goods passing through warehouses and ports; it does not measure what residents use.\nAlaska and Hawaii, both net buyers overall, are not shown. Modeled estimates from the federal Freight Analysis Framework (2024) and Census Bureau\npopulation (2025). Furniture is not included. Center for Research on Sustainable Forests, University of Maine.", fontsize=9, color=GRY, ha="left", va="center", linespacing=1.3)
 fig.savefig(OUT, dpi=300, facecolor="white"); print("saved", OUT)

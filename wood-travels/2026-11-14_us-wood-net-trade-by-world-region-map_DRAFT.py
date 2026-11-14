@@ -80,40 +80,43 @@ world = topo(f"{ATLAS}/world-atlas/countries-110m.json", "countries")
 reg = {r["region"]: (float(r["import_musd"]), float(r["export_musd"])) for r in csv.DictReader(open(os.path.join(HERE, "2024_us-wood-trade-by-world-region-faf5_DATA.csv")))}
 imp = sum(v[0] for v in reg.values()); exp_ = sum(v[1] for v in reg.values()); nneg = sum(1 for v in reg.values() if v[1] < v[0])
 print("imports", imp, "exports", exp_, "net", exp_ - imp, "regions selling the U.S. more:", nneg)
-B = lambda v: f"\\${v / 1000:.1f}B"
+B = lambda v: f"\\${v / 1000 + 1e-9:.1f}B"
 K = 26 / math.sqrt(11244)
-pos = {"Canada": (-105.0, 58.0), "Mexico": (-102.0, 23.5), "Rest of Americas": (-58.0, -12.0), "Europe": (14.0, 50.0), "Africa": (20.0, 3.0),
+pos = {"Canada": (-104.0, 57.0), "Mexico": (-102.0, 23.5), "Rest of Americas": (-58.0, -12.0), "Europe": (14.0, 50.0), "Africa": (20.0, 3.0),
        "SW & Central Asia": (62.0, 30.0), "Eastern Asia": (112.0, 35.0), "SE Asia & Oceania": (130.0, -14.0)}
 nice = {"Rest of Americas": "Rest of the Americas", "SW & Central Asia": "Southwest and\nCentral Asia", "SE Asia & Oceania": "Southeast Asia\nand Oceania"}
 BUY, SELL = "#2B5C8A", "#D9692E"
 
 fig = plt.figure(figsize=(10, 5.9), dpi=300); fig.patch.set_facecolor("white")
-fig.text(0.04, 0.94, f"The U.S. buys more wood than it sells in {['zero','one','two','three','four','five','six','seven','eight'][nneg]} of eight world regions", fontweight="bold", fontsize=19, color="#1A1A1A", ha="left", va="center")
-fig.text(0.04, 0.878, f"In 2024 the U.S. bought {B(imp)} of logs, wood products, pulp, and paper abroad and sold {B(exp_)}, a gap of {B(imp - exp_)}.\nCanada accounts for about two-thirds of the gap. Circle area is the gap with each region.", fontsize=10.6, color=INK, ha="left", va="center", linespacing=1.3)
+fig.text(0.04, 0.94, f"The U.S. spends more on wood and paper than it earns in {['zero','one','two','three','four','five','six','seven','eight'][nneg]} of eight world regions", fontweight="bold", fontsize=16.4, color="#1A1A1A", ha="left", va="center")
+fig.text(0.04, 0.878, f"In 2024 the U.S. bought {B(imp)} of logs, wood products, pulp, and paper abroad and sold {B(exp_)}, federal estimates show. By weight it shipped out\nmore than it brought in, because it sells logs and pulp and buys finished products. Circle area is the dollar gap, U.S. sold minus bought.", fontsize=10.6, color=INK, ha="left", va="center", linespacing=1.3)
 
 ax = fig.add_axes([0.02, 0.07, 0.66, 0.74]); ax.set_axis_off(); ax.set_aspect("equal")
 for name, rings in world.items():
     if name == "Antarctica":
         continue
-    add_poly(ax, rings, equal_earth, facecolor="#C9D8E6" if name == "United States of America" else LAND, edgecolor="white", linewidth=0.35, zorder=1)
+    add_poly(ax, rings, equal_earth, facecolor="#BDBAB2" if name == "United States of America" else LAND, edgecolor="white", linewidth=0.35, zorder=1)
 x0, _ = equal_earth(np.array([-170.0]), np.array([0.0])); x1, _ = equal_earth(np.array([180.0]), np.array([0.0]))
-_, y0 = equal_earth(np.array([0.0]), np.array([-56.0])); _, y1 = equal_earth(np.array([0.0]), np.array([80.0]))
+_, y0 = equal_earth(np.array([0.0]), np.array([-56.0])); _, y1 = equal_earth(np.array([0.0]), np.array([84.0]))
 ax.set_xlim(x0[0], x1[0]); ax.set_ylim(y0[0], y1[0])
-lab = {"Canada": (0, 0, "center"), "Mexico": (-16, -18, "right"), "Rest of Americas": (20, 0, "left"), "Europe": (0, 24, "center"), "Africa": (10, -2, "left"),
+lab = {"Canada": (0, 0, "center"), "Mexico": (22, -8, "left"), "Rest of Americas": (20, 0, "left"), "Europe": (0, 24, "center"), "Africa": (10, -2, "left"),
        "SW & Central Asia": (0, -24, "center"), "Eastern Asia": (0, 20, "center"), "SE Asia & Oceania": (0, -30, "center")}
 for k, (i, o) in sorted(reg.items(), key=lambda t: -abs(t[1][1] - t[1][0])):
     net = o - i; x, y = equal_earth(np.array([pos[k][0]]), np.array([pos[k][1]])); col = SELL if net > 0 else BUY
-    ax.scatter(x, y, s=(2 * K * math.sqrt(abs(net))) ** 2, c=col, edgecolors=col, linewidths=0.8, alpha=0.60, zorder=3)
+    ax.scatter(x, y, s=(2 * K * math.sqrt(abs(net))) ** 2, c=col, edgecolors=col, linewidths=0.8, alpha=0.60, zorder=3, clip_on=False)
     dx, dy, ha = lab[k]; amt = (B(abs(net)) if abs(net) >= 1000 else f"\\${abs(net):.0f}M")
     txt = f"{nice.get(k, k)}\n{'+' if net > 0 else '−'}{amt}"
     ax.annotate(txt, (x[0], y[0]), xytext=(dx, dy), textcoords="offset points", ha=ha, va="center", fontsize=9.4, fontweight="bold", color="white" if k == "Canada" else INK,
                 path_effects=None if k == "Canada" else halo, zorder=5, linespacing=1.1)
-xu, yu = equal_earth(np.array([-98.0]), np.array([34.0])); ax.text(xu[0], yu[0], "UNITED\nSTATES", ha="center", va="center", fontsize=9, fontweight="bold", color="#3F5E7A", linespacing=1.0, zorder=4)
+pp = (imp - exp_) * 1e6 / 341785457                      # U.S. resident population, Census Bureau July 1, 2025 estimates (sum of the state file)
+xu, yu = equal_earth(np.array([-117.0]), np.array([33.0])); xt, yt = equal_earth(np.array([-166.0]), np.array([-4.0]))
+ax.annotate(f"UNITED STATES\nbought {B(imp)}\nsold {B(exp_)}\ngap {B(imp - exp_)}\n\\${pp:.0f} per resident", (xu[0], yu[0]), xytext=(xt[0], yt[0]), textcoords="data", ha="left", va="top",
+            fontsize=9.4, fontweight="bold", color=INK, path_effects=halo, arrowprops=dict(arrowstyle="-", color=INK, lw=0.8, relpos=(0.3, 1.0)), zorder=6, linespacing=1.2)
 xn, yn = equal_earth(np.array([172.0]), np.array([-42.0]))
-ax.annotate("New Zealand alone sold the U.S.\n\\$251M of wood products", (xn[0], yn[0]), xytext=(-12, -22), textcoords="offset points", ha="right", va="center", fontsize=9, color=INK,
+ax.annotate("New Zealand: \\$251M of wood products\nsold to the U.S. (U.N. data)", (xn[0], yn[0]), xytext=(-12, -22), textcoords="offset points", ha="right", va="center", fontsize=9, color=INK,
             path_effects=halo, arrowprops=dict(arrowstyle="-", color=INK, lw=0.7), zorder=6, linespacing=1.15)
-for i, (c, t) in enumerate([(BUY, "sells the U.S. more than it buys"), (SELL, "buys more from the U.S. than it sells")]):
-    fig.text(0.055, 0.115 - 0.04 * i, "●", color=c, fontsize=13, ha="center", va="center"); fig.text(0.07, 0.115 - 0.04 * i, t, fontsize=9.4, color=INK, ha="left", va="center")
+for i, (c, t) in enumerate([(BUY, "U.S. buys more than it sells"), (SELL, "U.S. sells more than it buys")]):
+    fig.text(0.055, 0.165 - 0.04 * i, "●", color=c, fontsize=13, ha="center", va="center"); fig.text(0.07, 0.165 - 0.04 * i, t, fontsize=9.4, color=INK, ha="left", va="center")
 
 b = fig.add_axes([0.80, 0.16, 0.19, 0.60]); order = sorted(reg, key=lambda k: reg[k][0] - reg[k][1], reverse=True)
 for j, k in enumerate(order):
@@ -122,6 +125,6 @@ for j, k in enumerate(order):
     b.text(-600, y, nice.get(k, k).replace("\n", " ").replace("Southwest and Central Asia", "SW and Central Asia").replace("Southeast Asia and Oceania", "SE Asia and Oceania"), ha="right", va="center", fontsize=9.2, fontweight="bold", color=INK)
     b.text(max(i, o) + 500, y, f"{B(i)} / {B(o)}", ha="left", va="center", fontsize=9, color=INK)
 b.set_xlim(0, 37000); b.set_ylim(-0.7, len(order) - 0.3); b.set_axis_off()
-fig.text(0.69, 0.80, "BOUGHT", fontsize=10, fontweight="bold", color=BUY, ha="left", va="center"); fig.text(0.762, 0.80, "AND", fontsize=10, fontweight="bold", color=INK, ha="left", va="center"); fig.text(0.802, 0.80, "SOLD, 2024", fontsize=10, fontweight="bold", color=SELL, ha="left", va="center")
-fig.text(0.04, 0.035, "Modeled estimates from the federal Freight Analysis Framework (2024); furniture is not included. New Zealand figure from U.N. trade data.\nCenter for Research on Sustainable Forests, University of Maine.", fontsize=9, color=GRY, ha="left", va="center", linespacing=1.3)
+fig.text(0.80, 0.80, "U.S. BOUGHT", fontsize=10, fontweight="bold", color=BUY, ha="left", va="center"); fig.text(0.905, 0.80, "/ SOLD", fontsize=10, fontweight="bold", color=SELL, ha="left", va="center")
+fig.text(0.04, 0.035, "Modeled estimates from the federal Freight Analysis Framework (2024). Wooden furniture, not counted here, adds a gap of about \\$14B (U.N. data).\nCenter for Research on Sustainable Forests, University of Maine.", fontsize=9, color=GRY, ha="left", va="center", linespacing=1.3)
 fig.savefig(OUT, dpi=300, facecolor="white"); print("saved", OUT)
