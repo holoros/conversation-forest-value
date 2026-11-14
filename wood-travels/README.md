@@ -73,3 +73,12 @@ standalone net trade chart (`2026-11-12_us-lumber-and-pulp-net-trade_DRAFT`) sta
 in the article draft.
 
 - November 12, 2026 (later): pulp labels on the leakage map converted from metric tons to short tons at Aaron's direction (2.29 Mt = 2.5M tons from Brazil, 1.84 Mt = 2.0M tons from Canada; 0.08 and 0.50 Mt the other way = 0.1M and 0.6M tons). Arrow widths are unchanged.
+
+## Net trade maps, November 14, 2026
+
+- `2026-11-14_us-wood-net-trade-world-and-states-map_DRAFT.py` and `.png`: U.S. net trade in logs, wood products, pulp, and paper by world region, and each state's net trade with other states and abroad, 2024. It replaces the Maine export map in the article draft; the November 11 export map script and image are kept.
+- `2026-11-14_maine-wood-net-trade-world-and-us-map_DRAFT.py` and `.png`: the same view for Maine alone (net shipments to each state and net trade by world region). Not placed in the article.
+- Data, all from the Freight Analysis Framework version 5.6.1 data tabulation tool (Bureau of Transportation Statistics and Federal Highway Administration, https://faf.ornl.gov/faf5/dtt_total.aspx), SCTG 25 to 28, pulled November 14, 2026: `2024_us-wood-trade-by-state-faf5_DATA.csv`, `2024_us-wood-trade-by-world-region-faf5_DATA.csv`, `2024_us-wood-trade-by-commodity-faf5_DATA.csv`, and three Maine files named `2017-2024_maine-wood-*-faf5_DATA.csv` (thousand short tons and current million dollars).
+- Checks: state imports and exports sum to the national totals ($47.9B and $31.2B); domestic outflows equal domestic inflows across states. Twenty-two states are net sellers; Maine is ninth by net dollars ($3.5B) and has the highest sell-to-buy ratio in dollars (3.1; Arkansas 3.0) and the second highest in tons.
+- Limits: the figures are modeled estimates benchmarked to the 2017 Commodity Flow Survey, so years after 2017 do not fully reflect later mill closures. Raw logs are undercounted relative to the Maine Forest Service Wood Processor Report (2.7 million green tons imported in 2023 against about 0.1 million tons of logs here). Furniture is not included. World regions are the framework's eight zones, so individual countries such as New Zealand cannot be separated.
+
