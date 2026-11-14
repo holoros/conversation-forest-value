@@ -79,6 +79,8 @@ def add_poly(ax, rings, proj, **kw):
 world = topo(f"{ATLAS}/world-atlas/countries-110m.json", "countries")
 reg = {r["region"]: (float(r["import_musd"]), float(r["export_musd"])) for r in csv.DictReader(open(os.path.join(HERE, "2024_us-wood-trade-by-world-region-faf5_DATA.csv")))}
 imp = sum(v[0] for v in reg.values()); exp_ = sum(v[1] for v in reg.values()); nneg = sum(1 for v in reg.values() if v[1] < v[0])
+_kt = list(csv.DictReader(open(os.path.join(HERE, "2024_us-wood-trade-by-world-region-faf5_DATA.csv")))); kti = sum(float(r["import_kt"]) for r in _kt); kto = sum(float(r["export_kt"]) for r in _kt)
+print("kt in", kti, "kt out", kto, "usd per ton in", imp / kti * 1000, "out", exp_ / kto * 1000)
 print("imports", imp, "exports", exp_, "net", exp_ - imp, "regions selling the U.S. more:", nneg)
 B = lambda v: f"\\${v / 1000 + 1e-9:.1f}B"
 K = 26 / math.sqrt(11244)
@@ -89,7 +91,7 @@ BUY, SELL = "#2B5C8A", "#D9692E"
 
 fig = plt.figure(figsize=(10, 5.9), dpi=300); fig.patch.set_facecolor("white")
 fig.text(0.04, 0.94, f"The U.S. spends more on wood and paper than it earns in {['zero','one','two','three','four','five','six','seven','eight'][nneg]} of eight world regions", fontweight="bold", fontsize=16.4, color="#1A1A1A", ha="left", va="center")
-fig.text(0.04, 0.878, f"In 2024 the U.S. bought {B(imp)} of logs, wood products, pulp, and paper abroad and sold {B(exp_)}, federal estimates show. By weight it shipped out\nmore than it brought in, because it sells logs and pulp and buys finished products. Circle area is the dollar gap, U.S. sold minus bought.", fontsize=10.6, color=INK, ha="left", va="center", linespacing=1.3)
+fig.text(0.04, 0.878, f"In 2024 the U.S. bought {B(imp)} of logs, wood products, pulp, and paper abroad and sold {B(exp_)}, federal estimates show. It shipped out more\ntons than it brought in, but a ton coming in was worth about \\${imp / kti * 1000:,.0f} and a ton going out about \\${exp_ / kto * 1000:,.0f}, a sign that raw\nmaterials leave and value-added products come back. Circle area is the dollar gap, U.S. sold minus bought.", fontsize=10.6, color=INK, ha="left", va="center", linespacing=1.3)
 
 ax = fig.add_axes([0.02, 0.07, 0.66, 0.74]); ax.set_axis_off(); ax.set_aspect("equal")
 for name, rings in world.items():
