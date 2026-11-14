@@ -89,3 +89,7 @@ in the article draft.
 - Massachusetts check (2024 estimates): Maine is its largest out-of-state source of these products by weight (634 thousand tons of 4,150) and second by value ($656M of $6.57B, after Connecticut), so Maine does not supply most of its wood.
 - The bubble map (`2026-11-14_us-wood-net-trade-world-and-states-map_DRAFT`) is kept but no longer placed.
 
+
+### Red team repairs, November 14, 2026
+
+Both trade figures were reviewed by a fresh reviewer and repaired. The state figure now says "nets" and "shipped out minus brought in" because the Freight Analysis Framework measures shipments, not sales or use. The world figure title is limited to dollars because by weight the U.S. shipped out more than it brought in (52,044 against 43,518 thousand tons). The state population file was checked against the Census Bureau table NST-EST2025-POP (July 1, 2025 estimates; U.S. total 341,784,857), which gives the $49 per resident figure on the world map.
