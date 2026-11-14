@@ -82,3 +82,10 @@ in the article draft.
 - Checks: state imports and exports sum to the national totals ($47.9B and $31.2B); domestic outflows equal domestic inflows across states. Twenty-two states are net sellers; Maine is ninth by net dollars ($3.5B) and has the highest sell-to-buy ratio in dollars (3.1; Arkansas 3.0) and the second highest in tons.
 - Limits: the figures are modeled estimates benchmarked to the 2017 Commodity Flow Survey, so years after 2017 do not fully reflect later mill closures. Raw logs are undercounted relative to the Maine Forest Service Wood Processor Report (2.7 million green tons imported in 2023 against about 0.1 million tons of logs here). Furniture is not included. World regions are the framework's eight zones, so individual countries such as New Zealand cannot be separated.
 
+### Refinement, later on November 14, 2026
+
+- `2026-11-14_us-wood-net-trade-per-person-by-state-map_DRAFT.py` and `.png` replace the bubble map in the article: net wood trade per resident by state (all products, then logs, lumber, and panels, and pulp and paper), with a ranked panel of the top five sellers and Maine's neighbors. Maine is first at $2,472 per resident (Oregon $2,266, Arkansas $2,025); Massachusetts is at minus $266. New inputs: `2024_us-wood-trade-by-state-and-commodity-faf5_DATA.csv` and `2025_state-population-census-vintage-2025_DATA.csv` (Census Bureau July 1, 2025 estimates, transcribed from Wikipedia's state table and not yet checked against the Census file).
+- `2026-11-14_us-wood-net-trade-by-world-region-map_DRAFT.py` and `.png`: U.S. net trade by the framework's eight world regions with bought and sold bars. The New Zealand note is UN Comtrade, U.S.-reported imports of HS 44 from New Zealand in 2024 ($251.2M).
+- Massachusetts check (2024 estimates): Maine is its largest out-of-state source of these products by weight (634 thousand tons of 4,150) and second by value ($656M of $6.57B, after Connecticut), so Maine does not supply most of its wood.
+- The bubble map (`2026-11-14_us-wood-net-trade-world-and-states-map_DRAFT`) is kept but no longer placed.
+
